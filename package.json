@@ -1,0 +1,48 @@
+{
+  "name": "vimeoplaylist",
+  "version": "1.0.0",
+  "description": "Create endless video playlists with the Vimeo Player API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stephenscaff/vimeo-playlists.git"
+  },
+  "keywords": [
+    "vimeo",
+    "vimeo",
+    "playlists",
+    "vimeo",
+    "player",
+    "api",
+    "continous",
+    "vimeo",
+    "videos",
+    "video",
+    "playlists"
+  ],
+  "author": "Stephen Scaff",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stephenscaff/vimeo-playlists.git#issues"
+  },
+  "homepage": "https://github.com/stephenscaff/vimeo-playlists.git#readme",
+  "dependencies": {
+    "@vimeo/player": "^2.10.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/runtime": "^7.6.3",
+    "babelify": "^10.0.0",
+    "browserify": "^16.5.0",
+    "gulp": "^4.0.2",
+    "gulp-rename": "^2.0.0",
+    "gulp-terser": "^1.2.0",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
+  }
+}

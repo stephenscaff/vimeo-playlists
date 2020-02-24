@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/><![endif]-->
+  <title>📺Telly!</title>
+  <meta name="author" content="Stephen Scaff">
+  <meta name="description" content="📺Telly!">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+  <link rel='stylesheet' href='assets/css/app.min.css' type='text/css' media='all' />
+  <link rel='stylesheet' href='assets/css/fonts.min.css' type='text/css' media='all' />
+</head>
+<body class="bg-grey-dark">
+<section class="player">
+  <div class="grid">
+    <div class="player__flex">
+      <div id="js-player" class="player__vid"></div>
+    </div>
+  </div>
+</section>
+<section class="playlist">
+  <div class="grid">
+    <header class="playlist__header">
+      <h5 class="playlist__title">Playlist</h5>
+    </header>
+    <div id="js-playlist" class="playlist__scroller"></div>
+  </div>
+</section>
+<footer class="app-footer">
+  <i class="app-footer__icon js-emoji">📺</i>
+  <p class="app-footer__text">
+    Dope Vids for the Telly
+  </p>
+</footer>
+
+<script type='text/javascript' src='assets/js/app.min.js'></script>
+</body>
+</html>
