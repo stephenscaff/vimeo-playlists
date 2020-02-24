@@ -91,8 +91,9 @@ VimeoPlaylist.prototype = {
   loadVid(id) {
     this.player.loadVideo(id).then(() =>{
       this.setActiveState()
-    }).catch((error) => {
-      console.log('error loading video')
+    }).catch((err) => {
+      // @todo better error handling
+      console.error(err, 'error loading video')
     })
   },
 
@@ -241,9 +242,7 @@ VimeoPlaylist.prototype = {
 
   /**
    * Toggle Fullscreen
-   * This is bs. Looks like vimeo uses a different
-   * fullscreen than native requestFullscreen.
-   * Leaving here until I figure that out.
+   * Targeted vimeo iframe for full screen vid on Enter
    */
   toggleFullscreen() {
     let vid = document.querySelector('iframe')
