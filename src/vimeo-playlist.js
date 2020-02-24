@@ -1,8 +1,7 @@
 "use strict"
 
 import Player from '@vimeo/player';
-import { fetchData } from './utils';
-import { createFrag } from './utils';
+import { fetchData, createFrag } from './utils';
 import plistItemTemplate from './plist.tmpl';
 
 /**
@@ -17,13 +16,16 @@ import plistItemTemplate from './plist.tmpl';
 function VimeoPlaylist(el, options) {
   options = options || {}
   Object.assign(this, VimeoPlaylist.options, options)
+
   this.playlistOutput = document.querySelector(this.playlistOutput)
   this.playListItems = []
   this.currentVidIdx = 0
   this.vidCount = this.playlist.length
   this.isActive = false
   this.activeClass = 'is-playing'
+  this.pausedClass = 'is-paused'
   this.fullscreenToggle = this.fullScreenToggle
+
   this.player = new Player(el, {
     id:       this.playlist[this.currentVidIdx].id,
     width:    this.width,
@@ -57,13 +59,12 @@ VimeoPlaylist.prototype = {
     * Player settings
     */
    settings() {
-     this.player.setAutopause(false)
      this.player.setColor(this.color)
    },
 
    /**
     * Player Listeners
-    * @todo - handle pause and possible autoplay restarts
+    * @fires {onEnd | onPause | onPlay | toggleFullscreen}
     */
    listeners() {
 
@@ -76,6 +77,8 @@ VimeoPlaylist.prototype = {
 
      // On Vid End
      this.onEnd()
+     this.onPause()
+     this.onPlay()
    },
 
   /**
@@ -96,17 +99,44 @@ VimeoPlaylist.prototype = {
   /**
    * OnEnd
    * Listens for when a vid ends.
+   * @fires {next}
    */
   onEnd() {
     this.player.on('ended', () =>  {
-      console.log('ended')
+      console.info('ended')
       this.next()
+    });
+  },
+
+  /**
+   * OnPause
+   * @fires setPausedState
+   */
+  onPause() {
+    this.player.on('pause', () =>  {
+      console.info('pause')
+      this.setPausedState()
+    });
+  },
+
+  /**
+   * On Play
+   * Calls setActiveState on play
+   * @fires {setActiveState}
+   */
+  onPlay() {
+    this.player.on('play', () =>  {
+      console.info('play')
+      this.setActiveState()
     });
   },
 
   /**
    * Build Playlist
    * Constructs playlist markup from this.playlist
+   * Fetches playlist info from Vimeo API
+   * @external { fetchData | createFrag }
+   * @fires { setupFirstVid | handlePlaylistClicks}
    */
   buildPlaylist() {
     let counter = 0;
@@ -139,6 +169,7 @@ VimeoPlaylist.prototype = {
   /**
    * setupFirstVid
    * Handle setup for first vid in sequence
+   * @fires { player['play'] }
    */
   setupFirstVid() {
     this.playlistItems[0].classList.add(this.activeClass)
@@ -149,6 +180,7 @@ VimeoPlaylist.prototype = {
    * HandlePlaylistClicks
    * Loops over this.playlistItems and listens for
    * clicks to play vid and define currentVidIdx
+   * @fires { loadVid | setActiveState }
    */
   handlePlaylistClicks() {
     this.playlistItems.forEach((item, i) => {
@@ -168,9 +200,20 @@ VimeoPlaylist.prototype = {
    * Toggle active state class
    */
   setActiveState() {
-    let active = document.querySelector('.is-playing')
+    let active = document.querySelector(`.${this.activeClass}`)
+    let paused = document.querySelector(`.${this.pausedClass}`)
     if (active) active.classList.remove(this.activeClass)
+    if (paused) paused.classList.remove(this.pausedClass)
     this.playlistItems[this.currentVidIdx].classList.add(this.activeClass)
+  },
+
+  /**
+   * Set Paused Class
+   * Adds Paused Class to active playlist item
+   */
+  setPausedState() {
+    let active = document.querySelector(`.${this.activeClass}`)
+    if (active) active.classList.add(this.pausedClass)
   },
 
   /**

@@ -109,5 +109,6 @@ fetch(req)
 | `controls` | Boolean | Show player controls |
 | `autoplay` | Boolean | Autoplay vids (required for continuous playlist vids) |
 | `fullScreenToggle` | Boolean | Clicking  `Enter` triggers fullscreen vid |
+| `color` | String (3 or 6 digit hex value) | Player ui color |
 | `playlistOutput` | string | id or class to output playlist |
 | `playlist` | Array of Objects | playlist as array of objects { "id" : <vimeoid> } |
