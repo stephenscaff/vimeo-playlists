@@ -4,7 +4,7 @@
 
 Wanna to make a playlist of Vimeo vids?
 
-To check a simple app using the lib, with styles and all that, checkout [Telly](https://github.com/stephenscaff/telly), or the `example` directory. Telly is a full app with editable styles and a node server and such.
+To check a simple app using the lib, with styles and all that, checkout [Telly](https://github.com/stephenscaff/telly), or the `example` directory of this project. Telly is a full app with editable styles and a node server and such.
 
 
 ## Build
