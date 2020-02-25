@@ -7,16 +7,17 @@ import plistItemTemplate from './plist.tmpl';
 /**
  * VimeoPlaylist
  * Class for interacting with the Vimeo API
- * to create a continous playlist of vids
- * @class
+ * to create a continous playlist of vidsr
+ * @constructor
  * @requires @vimeo/player
- * @param {html element id} el - player element passed to Vimeo's imported Player class.
- * @param {object} options - plugin options for api and playlist ids
+ * @param {DOMElement} el - player element passed to Vimeo's imported Player class.
+ * @param {Object} options - plugin options, playlist, etc.
  */
 function VimeoPlaylist(el, options) {
   options = options || {}
   Object.assign(this, VimeoPlaylist.options, options)
 
+  this.hasPlaylist = this.hasPlaylist
   this.playlistOutput = document.querySelector(this.playlistOutput)
   this.playListItems = []
   this.currentVidIdx = 0
@@ -52,7 +53,7 @@ VimeoPlaylist.prototype = {
   init() {
     this.settings()
     this.listeners()
-    this.buildPlaylist()
+    if (this.hasPlaylist) this.buildPlaylist()
    },
 
    /**
@@ -67,18 +68,10 @@ VimeoPlaylist.prototype = {
     * @fires {onEnd | onPause | onPlay | toggleFullscreen}
     */
    listeners() {
-
-     // Click Enter for fullsreen video
-     if (this.fullscreenToggle) {
-       document.addEventListener("keypress", (e)=> {
-         if (e.keyCode === 13) this.toggleFullscreen()
-       }, false);
-     }
-
-     // On Vid End
      this.onEnd()
      this.onPause()
      this.onPlay()
+     this.onFullScreenToggle()
    },
 
   /**
@@ -133,6 +126,18 @@ VimeoPlaylist.prototype = {
   },
 
   /**
+   * On Fullscreen Toggle
+   * @fires {toggleFullscreen} - if fullscreenToggle
+   */
+  onFullScreenToggle(){
+    if (this.fullscreenToggle) {
+      document.addEventListener("keypress", (e)=> {
+        if (e.keyCode === 13) this.toggleFullscreen()
+      }, false);
+    }
+  },
+
+  /**
    * Build Playlist
    * Constructs playlist markup from this.playlist
    * Fetches playlist info from Vimeo API
@@ -150,18 +155,15 @@ VimeoPlaylist.prototype = {
         counter++;
         let tmpl = plistItemTemplate(obj[0])
         let frag = createFrag(tmpl, 'article', 'plist-item')
-        this.playlistOutput.appendChild(frag)
+        if (this.playlistOutput) this.playlistOutput.appendChild(frag)
 
         if (counter === this.vidCount) {
-
-          // define this.playlistItems
-          this.playlistItems = document.querySelectorAll('.plist-item__link')
-
-          // handle First Vid logic
           this.setupFirstVid()
+          // define this.playlistItems
+          if (!this.hasPlaylist ) return
+          this.playlistItems = document.querySelectorAll('.plist-item__link')
+          this.handlePlaylistClicks()
 
-          // handle clicks on playlist items
-          this.handlePlaylistClicks();
         }
       })
     })
@@ -173,7 +175,7 @@ VimeoPlaylist.prototype = {
    * @fires { player['play'] }
    */
   setupFirstVid() {
-    this.playlistItems[0].classList.add(this.activeClass)
+    if (this.playlistItems) this.playlistItems[0].classList.add(this.activeClass)
     this.player['play']()
   },
 
@@ -205,7 +207,8 @@ VimeoPlaylist.prototype = {
     let paused = document.querySelector(`.${this.pausedClass}`)
     if (active) active.classList.remove(this.activeClass)
     if (paused) paused.classList.remove(this.pausedClass)
-    this.playlistItems[this.currentVidIdx].classList.add(this.activeClass)
+    if (this.hasPlaylist)
+      this.playlistItems[this.currentVidIdx].classList.add(this.activeClass)
   },
 
   /**
@@ -268,6 +271,7 @@ VimeoPlaylist.options = {
   autoplay: true,
   color: '#7B8EF9',
   fullscreenToggle: false,
+  hasPlaylist: false,
   playlistOutput: '#js-playlist',
   playlist: []
 }

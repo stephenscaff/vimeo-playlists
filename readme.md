@@ -4,7 +4,7 @@
 
 Wanna to make a playlist of Vimeo vids?
 
-To check a simple app using the lib, with styles and all that, checkout [Telly](https://github.com/stephenscaff/telly), or the `example` directory of this project. Telly is a full app with editable styles and a node server and such.
+To check a simple app using the lib, with styles and all that, checkout [Telly](https://github.com/stephenscaff/telly) (the `example` directory of this project). Telly is a full app with editable styles and a node server and such.
 
 
 ## Build
@@ -101,14 +101,15 @@ fetch(req)
 
 ## Options
 
-| Option | Type | Description |
-| --- | --- | --- |
-| `width` | Number | Video width in px |
-| `title` | Boolean | Show video title |
-| `muted` | Boolean | Mute vids |
-| `controls` | Boolean | Show player controls |
-| `autoplay` | Boolean | Autoplay vids (required for continuous playlist vids) |
-| `fullScreenToggle` | Boolean | Clicking  `Enter` triggers fullscreen vid |
-| `color` | String (3 or 6 digit hex value) | Player ui color |
-| `playlistOutput` | string | id or class to output playlist |
-| `playlist` | Array of Objects | playlist as array of objects { "id" : <vimeoid> } |
+| Option | Type | Description | Default |
+| --- | --- | --- | --- |
+| `hasPlaylist` | Boolean |  Make false if you need endless vids, but not playlist ui | `true` |
+| `playlistOutput` | string | id or class to output playlist | `#js-playlist` |
+| `playlist` | Array of Objects | playlist as array of objects { "id" : <vimeoid> } | `[]` |
+| `width` | Number | Video width in px | `900` |
+| `title` | Boolean | Show video title | `false` |
+| `muted` | Boolean | Mute vids | `false` |
+| `controls` | Boolean | Show player controls | `true` |
+| `autoplay` | Boolean | Autoplay vids (required for continuous playlist vids) | `true` |
+| `fullScreenToggle` | Boolean | Clicking  `Enter` triggers fullscreen vid | `false` |
+| `color` | String (3 or 6 digit hex value) | Player ui color | `#7B8EF9` |
