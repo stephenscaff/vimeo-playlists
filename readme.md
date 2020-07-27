@@ -1,4 +1,4 @@
-# 📼 VimeoPlaylists!
+# 📼 VimeoPlaylist!
 
 A JS lib using the Vimeo Player API to create a playlist of Vimeo Vids (from Vimeo IDs)
 Features UI for playlist items, continuous `autoplay`, playlist navigation, and other _maybe_ useful options.
@@ -14,7 +14,12 @@ Features UI for playlist items, continuous `autoplay`, playlist navigation, and 
 
 ## 🤖 Commands
 
-**Install**
+**Install from NPM**
+
+`npm i vimeoplaylist`
+
+
+**Install Project Deps**
 
 `npm i`
 
@@ -57,7 +62,7 @@ Didn't want to make decisions on the styling of output, but the demo project has
 **Import**
 
 ```
-import VimeoPlaylist from 'VimeoPlaylist'
+import VimeoPlaylist from 'vimeoplaylist'
 
 /**
  * Options
