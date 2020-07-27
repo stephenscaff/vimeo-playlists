@@ -1,0 +1,41 @@
+//----------------------------------------------
+//  Flex Column
+//  A helper to output cross browser requirements for
+//  columns inside a flexbox parent. flex-basis isn't
+//  enough in all cases.
+//
+//  @param $width (size), $mobile (boolean)
+//----------------------------------------------
+@mixin flex-col(
+$smallest:null,
+$sm:null,
+$med:null,
+$lg:null){
+  flex-basis: $smallest;
+  width: $smallest;
+  max-width: $smallest;
+
+  @if $sm  {
+    @media (min-width: $mq-sm){
+      flex-basis: $sm;
+      width: $sm;
+      max-width: $sm;
+    }
+  }
+
+  @if $med {
+    @media (min-width: $mq-med){
+      flex-basis: $med;
+      width: $med;
+      max-width: $med;
+    }
+  }
+
+  @if $lg {
+    @media (min-width: $mq-lg) {
+        flex-basis: $lg;
+        width: $lg;
+        max-width: $lg;
+    }
+  }
+}

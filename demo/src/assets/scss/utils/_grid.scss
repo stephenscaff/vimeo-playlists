@@ -1,0 +1,47 @@
+//----------------------------------------------
+//  Grid / Containers
+//  Our global grid container, to be applies as a
+//  helper class, or placeholder extend.
+//----------------------------------------------
+%grid, .grid {
+  position: relative;
+  width: $grid-width;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+  &.is-lg-at-lg {
+    @media (min-width: $mq-med){
+      max-width: $grid-max-width-lg;
+    }
+  }
+  &.is-xl-at-lg {
+    @media (min-width: $mq-lg){
+      max-width: $grid-max-width-xl;
+    }
+  }
+}
+
+.grid-sm{
+  @extend %grid;
+  @media (min-width: $mq-med) {
+    max-width: $grid-max-width-sm;
+  }
+}
+
+.grid-lg{
+  @extend %grid;
+  @media (min-width: $mq-med) {
+    max-width: $grid-max-width-lg;
+  }
+}
+
+.grid-xl {
+  @extend %grid;
+  width: $grid-max-width-xxl;
+  max-width: $grid-max-width-xxl;
+  @media (min-width: $mq-med) {
+    width: $grid-max-width-xl;
+    max-width: $grid-max-width-xl;
+  }
+}

@@ -1,0 +1,180 @@
+//----------------------------------------------
+// Set all to border-box
+//----------------------------------------------
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+//----------------------------------------------
+// Smooth our type
+//----------------------------------------------
+body {
+  margin: 0;
+  width: 100%;
+  font-weight: 400;
+  font-style: normal;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+//----------------------------------------------
+// Prevent ios lag and horz overflow issues
+//----------------------------------------------
+html, body {
+  //overflow-x: hidden;
+  -webkit-overflow-scrolling: touch; // fix iOS lag
+}
+
+//----------------------------------------------
+// Ensure block level els
+//----------------------------------------------
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+//----------------------------------------------
+// reset margins and paddings
+//----------------------------------------------
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+blockquote,
+figure,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+ul{
+  list-style: none;
+}
+
+//----------------------------------------------
+// A better type fallback
+//----------------------------------------------
+h1,
+h2,
+h3,
+h4 {
+  font-size: inherit;
+}
+
+//----------------------------------------------
+// Remove default decorations
+//----------------------------------------------
+a,
+button {
+  text-decoration: none;
+}
+
+//----------------------------------------------
+// Reset Default Button/Submit styles
+//----------------------------------------------
+button,
+[type="button"],
+[type="reset"],
+[type="submit"]{
+  display: inline-block;
+  width: auto;
+  padding: 0;
+  border: 0;
+  letter-spacing: inherit;
+  line-height: inherit;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+
+button, input {
+  overflow: visible;
+  line-height: normal;
+}
+
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus,
+.btn:focus {
+  outline: none;
+}
+
+
+//----------------------------------------------
+// IE SVG Fix
+//----------------------------------------------
+svg:not(:root) {
+  overflow: hidden;
+}
+
+//----------------------------------------------
+// Ensure cursot points
+//----------------------------------------------
+label,
+select,
+button,
+input {
+  cursor: pointer;
+}
+
+//----------------------------------------------
+// Disabled element cursor
+//----------------------------------------------
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+//----------------------------------------------
+// IE Image scaling fix
+//----------------------------------------------
+img{
+  -ms-interpolation-mode:bicubic;
+}
+
+//----------------------------------------------
+// No Italics
+//----------------------------------------------
+address {
+  font-style: normal;
+}
+
+//----------------------------------------------
+//  Media
+//----------------------------------------------
+img, svg, figure, picture, object, embed, iframe, video {
+  max-width: 100%;
+  height: auto;
+  border: 0;
+}

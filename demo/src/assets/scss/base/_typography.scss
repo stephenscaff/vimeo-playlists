@@ -1,0 +1,77 @@
+body {
+  font-family: $font-paragraph;
+  color: $color-grey-dark;
+  line-height: 1.5;
+  background-color: #fff;
+}
+
+h1,h2,h3,h4,h5{
+  font-family: $font-header;
+  font-weight: 700;
+  color: $color-grey-dark;
+}
+
+//----------------------------------------------
+//  Headings
+//----------------------------------------------
+%font-xxl, h1 {
+  margin-bottom: $pad-xxs;
+  line-height: 1.35;
+  @include font-rwd($font-size-xxl, $font-size-xxxl)
+}
+
+%font-xl, h2 {
+  margin-bottom: $pad-xxs;
+  line-height: 1.35;
+  @include font-rwd($font-size-xl, $font-size-xxl)
+}
+
+%font-lg, h3 {
+  margin-bottom: $pad-xxs;
+  line-height: 1.4;
+  @include font-rwd($font-size-lg, $font-size-xl)
+}
+
+%font-med, h4 {
+  margin-bottom: $pad-xxs;
+  line-height: 1.45;
+  @include font-rwd($font-size-med)
+}
+
+%font-base, h5 {
+  margin-bottom: $pad-xxs;
+  line-height: 1.35;
+  @include font-rwd($font-size-base)
+}
+
+
+//----------------------------------------------
+//  paragraphs
+//----------------------------------------------
+p {
+  margin-top: 0;
+  margin-bottom: $pad-xs;
+}
+
+small {
+  display: block;
+  margin-bottom: 1em;
+  font-size: $font-size-xs;
+}
+
+b, strong{
+  font-weight: 700;
+}
+
+//----------------------------------------------
+//  Selection
+//----------------------------------------------
+::selection {
+  color: white;
+  background: $color-alpha;
+}
+
+%type-single-line {
+  word-spacing: 9999px;
+  display: block;
+}

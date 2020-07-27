@@ -1,0 +1,28 @@
+//----------------------------------------------
+//  nth-trans-delay()
+//  ransition Delay on nth-childs
+//  @param: $delay_items: [7]    - number of nth-of-type items to create
+//  @param: $delay_time:[1.5s]   - transition-dealy value
+//----------------------------------------------
+@mixin nth-trans-delay($delay_items: 7, $delay_time: 0.2s){
+  @for $i from 1 through $delay_items {
+    &:nth-child(#{$i}) {
+      transition-delay: $delay_time * $i;
+    }
+  }
+}
+
+
+//----------------------------------------------
+//  nth-ani-delay()
+//  Animation Delay on nth-childs
+//  @param: $delay_items: [7] - number of nth-of-type items to create
+//  @param: $delay_time:[1.5s] - transition-dealy value
+//----------------------------------------------
+@mixin nth-ani-delay($delay_items: 7, $delay_time: 0.2s){
+  @for $i from 1 through $delay_items {
+    &:nth-child(#{$i}) {
+      animation-delay: $delay_time * $i;
+    }
+  }
+}

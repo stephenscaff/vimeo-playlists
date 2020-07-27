@@ -1,0 +1,33 @@
+.player {
+  padding: $pad-xs 0 $pad-sm;
+
+  @media (min-width: $mq-med) {
+    padding: $pad-sm 0;
+  }
+
+  &__grid {
+    @extend %grid;
+    @media (min-width: $mq-lg) {
+      max-width: $grid-max-width-med;
+    }
+    @media (min-width: $mq-xxl) {
+      max-width: $grid-max-width-lg;
+    }
+  }
+
+  &__flex {
+    position:relative;
+    height: 0;
+    margin-bottom: 1em;
+    padding-bottom: 56.5%; // Widescreen
+    overflow: hidden;
+
+    iframe, object, embed, video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

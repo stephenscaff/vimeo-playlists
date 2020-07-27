@@ -1,0 +1,67 @@
+{
+  "name": "vimeoplaylist",
+  "version": "1.0.0",
+  "description": "Create endless video playlists with the Vimeo Player API.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stephenscaff/vimeo-playlists.git"
+  },
+  "keywords": [
+    "vimeo",
+    "vimeo",
+    "playlists",
+    "vimeo",
+    "player",
+    "api",
+    "continous",
+    "vimeo",
+    "videos",
+    "video",
+    "playlists"
+  ],
+  "author": "Stephen Scaff <stephenscaff.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stephenscaff/vimeo-playlists.git#issues"
+  },
+  "homepage": "https://github.com/stephenscaff/vimeo-playlists.git#readme",
+  "main": "dist/VimeoPlaylist.js",
+  "umd:main": "dist/VimeoPlaylist.umd.js",
+  "module": "dist/VimeoPlaylist.module.js",
+  "source": "src/VimeoPlaylist.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "microbundle --no-sourcemap",
+    "dev": "microbundle watch && onchange '**/*.js' -- prettier --write",
+    "format": "prettier \"**/*.{js,md}\" --write",
+    "format:watch": "prettier '**/*.js' --write",
+    "lint": "eslint --ext .js src",
+    "prepare": "npm run build",
+    "prepublishOnly": "rm -rf ./dist && npm run build",
+    "dev": "parcel ./demo/src/index.html --out-dir ./demo/dist --no-cache",
+    "demo:start": "parcel ./demo/src/index.html --out-dir ./demo/dist --no-cache",
+    "demo:build": "parcel build ./demo/src/index.html --out-dir ./demo/dist --public-url ./",
+    "demo:deploy": "npm run demo:build && gh-pages -d ./demo/dist",
+    "demo:clean": "rm -rf ./demo/dist"
+  },
+  "dependencies": {
+    "@vimeo/player": "^2.10.0",
+    "assets": "^3.0.1",
+    "dist": "^0.1.2",
+    "gh-pages": "^3.1.0",
+    "node-fetch": "^2.6.0",
+    "src": "^1.1.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.5",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.5.0",
+    "microbundle": "^0.12.3",
+    "parcel-bundler": "^1.12.4",
+    "prettier": "^2.0.5",
+    "sass": "^1.26.10"
+  }
+}

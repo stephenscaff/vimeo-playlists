@@ -1,0 +1,121 @@
+//----------------------------------------------
+// Playlist
+//----------------------------------------------
+
+$playlist-max-height: 90vh;
+$plist-col-pad: 1em;
+
+.playlist {
+  top: $pad-sm;
+  padding: 0 0 $pad;
+  //max-height: $playlist-max-height;
+  //overflow: hidden;
+
+  // Grid / Container
+  &__grid {
+    @extend .grid;
+    @media (min-width: $mq-med) {
+      max-width: $grid-max-width-sm;
+    }
+  }
+
+  &__header {
+    z-index: 5;
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: $pad-xs 0;
+    background: $color-grey-dark;
+    border-bottom: 1px solid rgba(255,255,255,0.2)
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 1.1em;
+    color: $color-white;
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+  }
+
+  &__fstoggle {
+    padding-right: 0.5em;
+    svg {
+      height: 1em;
+
+      path{
+        fill: #fff;
+        transition: fill 0.4s ease;
+      }
+    }
+
+    &:hover svg path {
+      fill: $color-alpha;
+    }
+
+    @media (max-width: $mq-med) {
+      display: none;
+    }
+  }
+
+  &__prev, &__next {
+    padding-left: 1em;
+    color: #fff;
+    transition: color 0.5s ease;
+
+    &:hover {
+      color: $color-alpha;
+    }
+
+    i {
+      font-size: 1.25em;
+      font-style: normal;
+      text-decoration: none;
+    }
+  }
+}
+
+//----------------------------------------------
+// Playlist Scroller
+// Creates a scrolling playlist,
+//----------------------------------------------
+.playlist.has-scroller {
+   @media (min-width: $mq-med) {
+     & {
+       padding: 0;
+     }
+    .playlist__scroller{
+      padding-right: 1em;
+      margin-top: 0.5em;
+      max-height: $playlist-max-height - 10vh;
+      max-width: 90vh;
+      overflow-y: scroll;
+      -webkit-overflow-scrolling: touch;
+
+      &::-webkit-scrollbar-track  {
+        background-color: rgba(0,0,0,0.1);
+      }
+
+      &::-webkit-scrollbar  {
+        width: 5px;
+        background-color: rgba(0,0,0,0.1);
+      }
+
+      &::-webkit-scrollbar-thumb{
+        background-color: $color-alpha;
+        border: 5px solid $color-alpha;
+        border-radius: 1em;
+      }
+
+      @supports (-ms-ime-align:auto)  {
+        scrollbar-track-color:  rgba(0,0,0,0.1);
+        scrollbar-3dlight-color:  rgba(0,0,0,0.1);
+        scrollbar-darkshadow-color:  rgba(0,0,0,0.1);
+        scrollbar-arrow-color:  $color-alpha;
+      }
+    }
+  }
+}

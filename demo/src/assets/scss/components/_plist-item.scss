@@ -1,0 +1,127 @@
+//----------------------------------------------
+// Playlist Item
+// Single Playlist items within the playlist container
+//----------------------------------------------
+.plist-item {
+  position: relative;
+  padding: 1em 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  cursor: pointer;
+  transition: background-color 1s ease;
+
+  &__link {
+    position: relative;
+    display: flex;
+    color: #fff;
+    outline: 0;
+  }
+
+  &__thumb {
+    position: relative;
+    @include flex-col(30%);
+    padding-right: $plist-col-pad;
+  }
+
+  &__thumb-color {
+    background-color: $color-alpha;
+    transform: scale(1);
+    transition: transform 0.25s $ease-cb, box-shadow 0.25s $ease-cb;
+
+    .plist-item:hover &,
+    .plist-item__link:focus & {
+      transform: scale(0.95);
+    }
+
+    .plist-item__link:focus & {
+      transform: scale(0.9);
+      box-shadow: 0 0 1px 2px rgba($color-alpha, 1);
+    }
+
+    .plist-item__link.is-playing &,
+    .plist-item__link:active & {
+      transform: scale(0.95);
+      box-shadow: 0 !important;
+    }
+
+    .plist-item__link.is-paused & {
+      transform: scale(1);
+    }
+  }
+
+  &__thumb-img {
+    display: block;
+    transform: scale(1);
+    transition: transform 0.25s $ease-cb;
+
+    .plist-item:hover & {
+      opacity: 0.5;
+    }
+    .plist-item__link.is-playing & {
+      opacity: 0.3;
+    }
+  }
+
+  &__icon-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    transition: opacity 0.5s $ease-cb-2, transform 0.5s $ease-cb-2;
+
+    .is-playing & {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .is-paused & {
+      opacity: 0.5;
+    }
+  }
+
+  &__main {
+    position: relative;
+    @include flex-col(70%);
+    padding: 0.25em 0em 0 $plist-col-pad;
+    transition: opacity 0.5s ease;
+
+    @media (min-width: $mq-med) {
+      padding: 0.5em 0em 0 $plist-col-pad;
+    }
+
+    .plist-item:hover & {
+      opacity: 0.7;
+    }
+  }
+
+  &__title {
+    display: block;
+    margin-bottom: 0.3em;
+    font-weight: 700;
+    font-size: $font-size-med;
+    line-height: 1;
+    @include text-overflow($max-width: 80%);
+
+    @media (min-width: $mq-med) {
+      margin-bottom: 0.5em;
+    }
+    .plist__link:hover &{
+      color: $color-alpha;
+    }
+  }
+
+  &__user {
+    font-size: $font-size-sm;
+  }
+
+  &__time-dur {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: block;
+    color: #fff;
+    font-family: $font-mono;
+    font-size: $font-size-xs;
+  }
+}

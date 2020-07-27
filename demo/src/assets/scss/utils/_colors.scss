@@ -1,0 +1,37 @@
+//--------------------------------------------
+// Background Color Helpers
+//--------------------------------------------
+.bg-alpha {
+  background-color: $color-alpha;
+}
+
+.bg-grey-lightest {
+  background-color: $color-grey-lightest;
+}
+
+.bg-grey-light {
+  background-color: $color-grey-light;
+}
+
+.bg-grey {
+  background-color: $color-grey-mid;
+}
+
+.bg-grey-dark {
+  background-color: $color-grey-dark;
+}
+
+.bg-white {
+  background-color: $color-white;
+}
+
+//--------------------------------------------
+// Color Helpers
+//--------------------------------------------
+.color-alpha {
+  color: $color-alpha;
+}
+
+.color-white {
+  color: $color-white;
+}

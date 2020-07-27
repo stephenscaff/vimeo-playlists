@@ -1,0 +1,47 @@
+.app-header {
+  z-index: 9;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1em;
+  background-color: $color-grey-dark;
+
+  @media (min-width: $mq-lg) {
+    background-color: rgba(255,255,255,0);
+  }
+
+  &__grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__brand {
+    color: #fff;
+    font-size: 0.6em;
+    font-family: $font-mono;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-alpha;
+    }
+  }
+
+  &__icon .icon-github {
+    height: 1.5em;
+
+    path {
+      fill: $color-alpha;
+    }
+  }
+}
+
+.has-header-offset {
+  padding-top: 3em;
+
+  @media (min-width: $mq-lg) {
+    padding-top: 2em;
+  }
+}

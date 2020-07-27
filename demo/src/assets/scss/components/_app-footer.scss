@@ -1,0 +1,24 @@
+//--------------------------------------------
+// App Footer
+//--------------------------------------------
+.app-footer{
+  padding: $pad-sm 0;
+  text-align: center;
+  color: $color-white;
+  border-top: 1px solid rgba(255,255,255,0.1);
+
+  &__icon {
+    display: block;
+    margin-bottom: 1em;
+    font-size: 1em;
+    font-style: normal;
+  }
+
+  &__text {
+    margin-bottom: 0;
+    font-family: $font-mono;
+    letter-spacing: 0.1em;
+    font-size: 0.65em;
+    text-transform: uppercase;
+  }
+}

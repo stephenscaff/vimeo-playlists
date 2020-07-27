@@ -1,0 +1,189 @@
+//----------------------------------------------
+//  Config
+//
+//  01: Font variables
+//  02: Media Queries
+//  03: Grid and Padding
+//  04: Colors
+//  05: Z-indexes
+//  06: Misc
+//----------------------------------------------
+
+//----------------------------------------------
+// Fonts
+//----------------------------------------------
+$font-header: "maax", Helvetica, sans-serif;
+$font-paragraph: "maax", Helvetica, sans-serif;
+$font-mono: "maax-mono", monospace;
+
+//----------------------------------------------
+// Fonts: Lineheight
+//----------------------------------------------
+$base-lineheight: 1.6;
+
+//----------------------------------------------
+// Fonts: Size variables
+//----------------------------------------------
+$font-size-xxxl: 3em;
+$font-size-xxl: 2.5em;
+$font-size-xl: 2em;
+$font-size-lg: 1.5em;
+$font-size-med: 1.1em;
+$font-size-base: 1em;
+$font-size-sm: 0.85em;
+$font-size-xs: 0.7em;
+$font-size-xxs: 0.7rem;
+
+
+//----------------------------------------------
+// Media Queries
+//----------------------------------------------
+// Smallest phone
+$mq-xsmall: 22em;
+// Phone
+$mq-sm: 32em;
+// Tablet
+$mq-med: 54em;
+// Laptop
+$mq-lg: 67em;
+// Past laptop
+$mq-xl: 94em;
+// Mid-size monitor
+$mq-xxl: 115em;
+// Thunderbold goes to 157em
+$mq-xxxl: 130em;
+
+
+//----------------------------------------------
+// Grid
+//----------------------------------------------
+$grid-width:          92%;
+$grid-width-lg:       88%;
+$grid-max-width-sm:   41em;
+$grid-max-width:      46em;
+$grid-max-width-med:  52em;
+$grid-max-width-lg:   62em;
+$grid-max-width-xl:   90%;
+$grid-max-width-xxl:  95%;
+
+//----------------------------------------------
+// Spacings (pad/margin)
+//----------------------------------------------
+$pad-scale: 1em;
+$pad-xxs:   $pad-scale / 2;
+$pad-xs:    $pad-scale;
+$pad-sm:    $pad-xs + $pad-xs;
+$pad-med:   $pad-sm + $pad-xs;
+$pad:       $pad-sm + $pad-sm;
+$pad-lg:    $pad + $pad-sm;
+$pad-xl:    $pad + $pad;
+$pad-col:   $pad-xs;
+$pad-col-med: $pad-sm;
+$pad-col-lg: $pad-med;
+
+//----------------------------------------------
+// Global Sizing Elements
+//----------------------------------------------
+$header-height-sm: 3.5em;
+$header-height-lg: 4em;
+
+//----------------------------------------------
+// Measures
+//----------------------------------------------
+$measure-sm: 23em;
+$measure-med: 30em;
+
+//----------------------------------------------
+// Colors
+//----------------------------------------------
+$color-blue:       #6c77f7;
+$color-green:      #58ff9c;
+$color-alpha:      $color-blue;
+$color-beta:       $color-blue;
+$color-white:      #fff;
+$color-dark:       #242424;
+$color-grey-lightest: #f9f8ff;
+$color-grey-light:    #f6f6f6;
+$color-grey-mid:       #645853;
+$color-grey-dark:     #111;
+$color-warning:       #c43a31;
+$color-success:       #1ABC9C;
+
+
+//----------------------------------------------
+// Base UI
+//----------------------------------------------
+$base-border-radius: 0px;
+$base-border-width:  1px;
+
+//----------------------------------------------
+// Forms
+//----------------------------------------------
+$form-border-width: 1px;
+$form-color: $color-grey-dark;
+$form-color-placeholder: $color-grey-mid;
+$form-color-border: $color-grey-light;
+$form-pad:  $pad-xs;
+
+//----------------------------------------------
+// Z-Index Scale
+//----------------------------------------------
+$z-close-x: 10;
+$z-panel: 9;
+$z-popup: 9;
+$z-popup-overlay: 8;
+$z-menu-toggle: 8;
+$z-sticky: 7;
+$z-app-header: 7;
+$z-app-menu:   6;
+$z-filter-nav : 6;
+$z-notice-bar: 5;
+$z-content: 5;
+$z-bg-img: 1;
+$z-abs-bg: 1;
+$z-bg-el: 1;
+$z-el-under: 1;
+
+//----------------------------------------------
+// Box Shadow scale
+//----------------------------------------------
+$box-shadow-sm: 0 -1px 1px 0px rgba(0,0,0,0.05);
+$box-shadow-med: 0 1px 15px 2px rgba(0,0,0,0.05);
+$box-shadow-lg: 0 1px 17px 1px rgba(0,0,0,0.1);
+$box-shadow-lg-hover: 0 6px 1em 0.5em rgba(0,0,0,0.1);
+$box-shadow-xl: 0 19px 57px 0px rgba(0,0,0,0.1);
+
+
+//----------------------------------------------
+// easings
+//----------------------------------------------
+$ease-cb: cubic-bezier(.4,0,.2,1);
+$ease-cb-2: cubic-bezier(.19,1,.22,1);
+$ease-cb-3: cubic-bezier(.77,0,.175,1);
+
+$ease-in-quad: cubic-bezier(0.550, 0.085, 0.680, 0.530);
+$ease-in-cubic: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+$ease-in-quart: cubic-bezier(0.895, 0.030, 0.685, 0.220);
+$ease-in-quint: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+$ease-in-sine: cubic-bezier(0.470, 0.000, 0.745, 0.715);
+$ease-in-expo: cubic-bezier(0.950, 0.050, 0.795, 0.035);
+$ease-in-circ: cubic-bezier(0.600, 0.040, 0.980, 0.335);
+$ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
+
+$ease-out-quad: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+$ease-out-cubic: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+$ease-out-quart: cubic-bezier(0.165, 0.840, 0.440, 1.000);
+$ease-out-quint: cubic-bezier(0.230, 1.000, 0.320, 1.000);
+$ease-out-sine: cubic-bezier(0.390, 0.575, 0.565, 1.000);
+$ease-out-expo: cubic-bezier(0.190, 1.000, 0.220, 1.000);
+$ease-out-circ: cubic-bezier(0.075, 0.820, 0.165, 1.000);
+$ease-out-back: cubic-bezier(0.175, 0.885, 0.320, 1.275);
+
+$ease-in-out-quad: cubic-bezier(0.455, 0.030, 0.515, 0.955);
+$ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1.000);
+$ease-in-out-quart: cubic-bezier(0.770, 0.000, 0.175, 1.000);
+$ease-in-out-quint: cubic-bezier(0.860, 0.000, 0.070, 1.000);
+$ease-in-out-sine: cubic-bezier(0.445, 0.050, 0.550, 0.950);
+$ease-in-out-expo: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+$ease-in-out-circ: cubic-bezier(0.785, 0.135, 0.150, 0.860);
+$ease-in-out-back: cubic-bezier(0.680, -0.550, 0.265, 1.550);

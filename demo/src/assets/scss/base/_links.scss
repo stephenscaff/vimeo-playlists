@@ -1,0 +1,17 @@
+//----------------------------------------------
+//  Global Links
+//----------------------------------------------
+a{
+ color: $color-alpha;
+ text-decoration: none;
+ line-height:inherit;
+ transition: color 0.4s ease-in-out;
+
+  &:hover, &:focus, a:hover &{
+    color: lighten($color-alpha, 10);
+    transition: color 0.4s ease-in-out;
+  }
+  &:active{
+    color: darken($color-alpha, 10);
+  }
+}

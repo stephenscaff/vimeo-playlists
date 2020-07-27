@@ -1,0 +1,9 @@
+.app-layout {
+  width: 100%;
+  margin: 0 auto;
+  @media (min-width: $mq-xl) {
+    display: grid;
+    grid-template-columns: 2fr 0.5fr;
+    grid-column-gap: $pad-sm;
+  }
+}
