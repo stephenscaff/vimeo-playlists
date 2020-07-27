@@ -34,7 +34,7 @@ let options = {
   muted: true,
   controls: true,
   fullScreenToggle: true,
-  color: '#7B8EF9'
+  color: '#6c77f7'
 }
 
 let vids = new VimeoPlaylist('js-player', options).init()

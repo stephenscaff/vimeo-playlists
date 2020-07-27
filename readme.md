@@ -1,45 +1,63 @@
-# VimeoPlaylists! 📼
+# 📼 VimeoPlaylists!
 
-A JS lib using the Vimeo Player API to create a playlist of vids.
-Features UI for playlist items, continuous `autoplay`, playlist navigation, and other maybe useful options.
+A JS lib using the Vimeo Player API to create a playlist of Vimeo Vids (from Vimeo IDs)
+Features UI for playlist items, continuous `autoplay`, playlist navigation, and other _maybe_ useful options.
 
-## Build
+[Live Demo of Vimeo Playlists→](https://stephenscaff.github.io/vimeo-playlists/)
 
-_Install_
+
+## 📦 Dependencies
+
+- `@vimeo/player`(derp)
+
+
+
+## 🤖 Commands
+
+**Install**
+
 `npm i`
 
-_Run Demo_
-Run a demo project using the lib and fire up a local server using `parcel.js`.
-Didn't want to make decisions on the styling of output, but the demo project has styles to get you going if so desired.
+
+**Build**
+
+`npm run build`
+
+Builds `src` with `microbundle` to the various common js patterns.
+
+
+**Run Dev**
+
+`npm run dev`
+
+Dev fires up a server watching the files via `parcel.js`
+
+
+**Run Demo**
 
 `npm run demo:start`
 
-_Lint_
+Run a demo project using the lib and fire up a local server using `parcel.js`.
+Didn't want to make decisions on the styling of output, but the demo project has styles to get you going if so desired.
+
+
+**Lint**
+
 `npm run lint`
 
-_Prettier / Format_
+
+**Prettier / Format**
+
 `npm run format`
 
-## Dependencies
 
-- `@vimeo/player`
 
-## Plugin Usage
+## 🔌 Usage
 
-_Markup_
+**Import**
 
 ```
-<!-- Player (main video embed)-->
-<div id="js-vp-player"></div>
-
-<!-- Playlist (list of vids) -->
-<div id="js-playlist"></div>
-```
-
-#### JS - Init Example with `playlist`
-
-```
-import VimeoPlaylist from './vimeo-playlist.js' (or whatever you add)
+import VimeoPlaylist from 'VimeoPlaylist'
 
 /**
  * Options
@@ -60,10 +78,22 @@ VimeoPlaylist.options = {
   ]
 }
 
+// Init
 let vids = new VimeoPlaylist('js-vp-player', options).init()
 ```
 
-#### JS Options - External JSON File
+**Markup**
+
+```
+<!-- Player (main video embed)-->
+<div id="js-vp-player"></div>
+
+<!-- Playlist (list of vids) -->
+<div id="js-playlist"></div>
+```
+
+
+### Usage - External JSON File
 
 ```
 import VimeoPlaylist from './vimeo-playlist.js'
@@ -86,10 +116,9 @@ fetch(req)
 })
 ```
 
-#### JSON File Example
-
+**Example JSON file**
 ```
-// Array of objects
+// playlist.json
 [
   {
     "id": "288588748"
@@ -103,7 +132,9 @@ fetch(req)
   ....
 ```
 
-## Playlist Template Markup
+
+
+### Playlist Template Markup
 
 `src/plist.tmpl.js` contains the markup for playlist items.
 
@@ -146,7 +177,8 @@ export default function plistItemTemplate(data) {
 When related Vid is playing, the playlist item rocks an `is-playing` class.
 Again, see the demo project/folder for some styles if you don't want to hand-roll your own from scratch.
 
-## Options
+
+## 🕹 Options
 
 | Option                    | Type                            | Description                                              | Default           |
 | ------------------------- | ------------------------------- | -------------------------------------------------------- | ----------------- |
@@ -165,11 +197,12 @@ Again, see the demo project/folder for some styles if you don't want to hand-rol
 | `fullscreenToggle`        | String / Element ID             | id of fullscreen video toggle control                    | `#js-vp-fstoggle` |
 | `fullscreenToggleKeyCode` | String / Element ID             | full screen toggle keycode                               | `Digit1`          |
 
-## Playlist Navigation
+
+### 🧭 Playlist Navigation
 
 Options exist for playlist navigation.
 
-_Default Nav ids_
+**Default Nav ids**
 
 ```
 <!-- Playlist Nav -->
@@ -179,7 +212,7 @@ _Default Nav ids_
 </nav>
 ```
 
-_Customize Nav Ids_
+**Customize Nav Ids**
 
 ```
 let options = {
@@ -189,19 +222,19 @@ let options = {
 }
 ```
 
-## Fullscreen Toggle
+### 🖥️ Fullscreen Toggle
 
 Leverage the fullscreen api to launch currently playing vid as fullscreen.
 Fullscreen mode repains during autoplay.
 
-_Default FS Toggle_
+**Default FS Toggle**
 
 ```
 <!-- Playlist Full Screen Toggle -->
 <button id="js-vp-fstoggle" class="playlist__fstoggle">Fullscreen</button>
 ```
 
-_Customize FS Toggle Ids_
+**Customize FS Toggle Ids**
 
 Provide a `KeyboardEvent.code` string.
 
@@ -212,7 +245,7 @@ let options = {
 }
 ```
 
-## ToDos
+## 📅 ToDos
 
 - Provide template for displaying current Video's info (title, author, times, etc)
 - Option for custom playlist template
