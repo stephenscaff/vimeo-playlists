@@ -13,6 +13,6 @@ var e=arguments[3];function t(e,t){if(!(e instanceof t))throw new TypeError("Can
 },{"@vimeo/player":"X0aY","./utils":"Hd0y","./plist.tmpl":"V7Yh"}],"WDN8":[function(require,module,exports) {
 module.exports=[{id:"288588748"},{id:"293125541"},{id:"328536852"},{id:"281449879"},{id:"341760931"},{id:"316705014"},{id:"218833458"},{id:"280976062"},{id:"343072157"},{id:"343513016"},{id:"354894903"},{id:"229056408"},{id:"373994913"},{id:"310394931"},{id:"342058177"},{id:"77149266"},{id:"330089817"},{id:"294478296"},{id:"373858773"},{id:"246877776"},{id:"262117047"},{id:"312120351"}];
 },{}],"i5Wi":[function(require,module,exports) {
-"use strict";var l=e(require("../../../../src/VimeoPlaylist.js")),t=e(require("../data/playlist.json"));function e(l){return l&&l.__esModule?l:{default:l}}var s={playlist:t.default,hasPlaylist:!0,playlistOutput:"#js-playlist",muted:!0,controls:!0,fullScreenToggle:!0,color:"#7B8EF9"},a=new l.default("js-player",s).init();
+"use strict";var l=e(require("../../../../src/VimeoPlaylist.js")),t=e(require("../data/playlist.json"));function e(l){return l&&l.__esModule?l:{default:l}}var s={playlist:t.default,hasPlaylist:!0,playlistOutput:"#js-playlist",muted:!0,controls:!0,fullScreenToggle:!0,color:"#6c77f7"},a=new l.default("js-player",s).init();
 },{"../../../../src/VimeoPlaylist.js":"YAPb","../data/playlist.json":"WDN8"}]},{},["i5Wi"], null)
-//# sourceMappingURL=app.c0aa62c8.js.map
+//# sourceMappingURL=app.eb3b13b4.js.map
