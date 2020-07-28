@@ -1,22 +1,76 @@
 # 📼 VimeoPlaylist!
 
-A JS lib using the Vimeo Player API to create a playlist of Vimeo Vids (from Vimeo IDs)
-Features UI for playlist items, continuous `autoplay`, playlist navigation, and other _maybe_ useful options.
+A JS lib using the Vimeo Player API to create a playlist of Vimeo Vids (from Vimeo IDs).
+
+Features
+- Playlist built with array of Vimeo IDs or external JSON file
+- UI for playlist items
+- Output of Player, Playlist, Playlist Nav, Fullscreen Toggle conforms to your markup/setup
+- Continuous `autoplay` of playlist items
+- Equalizer animation when playing
+- Playlist navigation,
+- Fullscreen API control
+- Vimeo API options like `width`, `color`, `player controls`, `muted`, `title`
+- and other _maybe_ useful options.
+
 
 [Live Demo of Vimeo Playlists→](https://stephenscaff.github.io/vimeo-playlists/)
 
 
+
 ## 📦 Dependencies
 
-- `@vimeo/player`(derp)
+- `@vimeo/player`(derps)
 
 
-
-## 🤖 Commands
+## Quickstart
 
 **Install from NPM**
 
 `npm i vimeoplaylist`
+
+
+**JS**
+```
+import VimeoPlaylist form 'vimeoplaylist'
+
+// Plugin Options (with internal data array)
+let options = {
+  hasPlaylist: true,
+  color: '#6c77f7',
+  playlist: [
+    { "id": "288588748" },
+    { "id": "328536852" },
+    { "id": "281449879" }
+  ]
+}
+
+// Init on #js-player
+let vids = new VimeoPlaylist('js-player', options).init()
+```
+
+**Markup**
+```
+<!-- Player -->
+<div class="player">
+  <div id="js-vp-player" class="player__vid"></div>
+</div>
+
+<!-- Playlist Nav -->
+<nav class="playlist-nav">
+  <button id="js-vp-prev" class="playlist-nav__prev"><i>←</i> Prev</button>
+  <button id="js-vp-next" class="playlist-nav__next">Next <i>→</i></button>
+</nav>
+
+<!-- Playlist -->
+<div id="js-vp-playlist" class=""playlist>
+```
+
+**Styles**
+Wanted to keep the concerns seperate,, but see the `demo` project for some bsic styles/scss if you don't wanna hand roll your own.
+
+
+## 🤖 Project Commands
 
 
 **Install Project Deps**
@@ -56,52 +110,30 @@ Didn't want to make decisions on the styling of output, but the demo project has
 `npm run format`
 
 
-
-## 🔌 Usage
-
-**Import**
+### Usage - Data as External JSON File (with Babel or Parcel)
 
 ```
 import VimeoPlaylist from 'vimeoplaylist'
+import data from '../data/playlist.json'
 
-/**
- * Options
- * Internal playlist as array of objects { "id" : <vimeoid> }
- */
-VimeoPlaylist.options = {
-  width: 1200,
-  muted: true,
+let options = {
+  playlist: data,
+  hasPlaylist: true,
+  playlistOutput: '#js-playlist',
+  muted: false,
   controls: true,
-  autoplay: true,
-  color: '#7B8EF9',
-  fullscreenToggle: true,
-  playlistOutput: '#js-vp-playlist',
-  playlist: [
-    { "id": "288588748" },
-    { "id": "328536852" },
-    { "id": "281449879" }
-  ]
+  color: '#6c77f7',
+  fullscreenToggle: '#js-vp-fstoggle',
+  fullscreenToggleKeyCode: 'Digit1'
 }
 
-// Init
-let vids = new VimeoPlaylist('js-vp-player', options).init()
+let vids = new VimeoPlaylist('js-player', options).init()
 ```
 
-**Markup**
+### Usage - Data as External JSON File (with `Request()`)
 
 ```
-<!-- Player (main video embed)-->
-<div id="js-vp-player"></div>
-
-<!-- Playlist (list of vids) -->
-<div id="js-playlist"></div>
-```
-
-
-### Usage - External JSON File
-
-```
-import VimeoPlaylist from './vimeo-playlist.js'
+import VimeoPlaylist from 'vimeoplaylist'
 
 /**
  * Init VimeoPlaylist class
@@ -113,8 +145,9 @@ fetch(req)
   .then(response => response.json())
   .then(data => {
     let options = {
-      playlist: data, // Hey data!
-      muted: true,
+      playlist: data,
+      hasPlaylist: true,
+      playlistOutput: '#js-playlist',
       controls: true // etc...
     }
     let vids = new VimeoPlaylist('js-vp-player', options).init()
@@ -137,50 +170,75 @@ fetch(req)
   ....
 ```
 
-
-
-### Playlist Template Markup
-
-`src/plist.tmpl.js` contains the markup for playlist items.
+## Usage - Data as array of IDs
 
 ```
-/**
- * plistTemplate
- * Markup template for playlist items
- * Wrapping <article='plist-item'> added via doc frag helperss
- * @param {obj} data - response object of video info from vimeo promise
- * @return {string} returns template literal
- */
-export default function plistItemTemplate(data) {
-  let timeDuration = formatTime(data.duration)
+import VimeoPlaylist form 'vimeoplaylist'
 
-  return `
-    <a class="plist-item__link" data-vimeo-id="${data.id}" tabindex="0">
-      <figure class="plist-item__thumb">
-        <div class="plist-item__thumb-color">
-          <img class="plist-item__thumb-img" src="${data.thumbnail_large}"/>
-          <svg class="plist-item__icon-play" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#fff" width="50" height="50" viewBox="0 0 36 36">
-            <path d="M 12,26 18.5,22 18.5,14 12,10 z M 18.5,22 25,18 25,18 18.5,14 z"></path>
-          </svg>
-        </div>
-      </figure>
-      <div class="plist-item__main">
-        <span class="plist-item__title">${data.title}</span>
-        <span class="plist-item__user">${data.user_name}</span>
-        <span class="plist-item__time-dur">${timeDuration}</span>
-        <div class="equalizer">
-          <span class="equalizer__item"></span>
-          <span class="equalizer__item"></span>
-          <span class="equalizer__item"></span>
-        </div>
-      </div>
-    </a>
-  `
+// Plugin Options (with internal data array)
+let options = {
+  color: '#6c77f7',
+  hasPlaylist: true,
+  playlistOutput: '#js-vp-playlist',
+  playlist: [
+    { "id": "288588748" },
+    { "id": "328536852" },
+    { "id": "281449879" }
+  ]
 }
+
+// Init on #js-player
+let vids = new VimeoPlaylist('js-player', options).init()
+```
+
+**Markup**
+
+```
+<!-- Player (main video embed)-->
+<div id="js-vp-player"></div>
+
+<!-- Playlist (list of vids) -->
+<div id="js-vp-playlist"></div>
+
+<!-- Playlist Nav -->
+<nav class="playlist-nav">
+  <button id="js-vp-prev" class="playlist-nav__prev"><i>←</i> Prev</button>
+  <button id="js-vp-next" class="playlist-nav__next">Next <i>→</i></button>
+</nav>
+```
+
+### Playlist Template
+
+`src/plist.tmpl.js` contains the markup for playlist items.
+It looks like this:
+
+```
+<article='plist-item'>
+  <a class="plist-item__link" data-vimeo-id="${data.id}" tabindex="0">
+    <figure class="plist-item__thumb">
+      <div class="plist-item__thumb-color">
+        <img class="plist-item__thumb-img" src="${data.thumbnail_large}"/>
+        <svg class="plist-item__icon-play" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#fff" width="50" height="50" viewBox="0 0 36 36">
+          <path d="M 12,26 18.5,22 18.5,14 12,10 z M 18.5,22 25,18 25,18 18.5,14 z"></path>
+        </svg>
+      </div>
+    </figure>
+    <div class="plist-item__main">
+      <span class="plist-item__title">${data.title}</span>
+      <span class="plist-item__user">${data.user_name}</span>
+      <span class="plist-item__time-dur">${timeDuration}</span>
+      <div class="equalizer">
+        <span class="equalizer__item"></span>
+        <span class="equalizer__item"></span>
+        <span class="equalizer__item"></span>
+      </div>
+    </div>
+  </a>
+</article>
 ```
 
 When related Vid is playing, the playlist item rocks an `is-playing` class.
-Again, see the demo project/folder for some styles if you don't want to hand-roll your own from scratch.
+Again, see the `demo` project/folder for some `scss` styles if you don't want to hand-roll your own from scratch.
 
 
 ## 🕹 Options
@@ -254,3 +312,4 @@ let options = {
 
 - Provide template for displaying current Video's info (title, author, times, etc)
 - Option for custom playlist template
+- Perhaps support for multiple instances per page, with everything scoped to element.

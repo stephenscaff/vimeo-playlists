@@ -1,40 +1,23 @@
 'use strict'
 
-import VimeoPlaylist from '../../../../src/VimeoPlaylist.js'
-import data from '../data/playlist.json'
-/**
- * init VimeoPlaylist class
- * Inside request of external data source
- */
-// const req = new Request(data)
-//
-// fetch(req)
-//   .then((response) => {
-//     console.log(response.json(), req)
-//   })
-//   .then((data) => {
-//     let options = {
-//       playlist: data,
-//       hasPlaylist: true,
-//       playlistOutput: '#js-playlist',
-//       muted: true,
-//       controls: true,
-//       fullScreenToggle: true,
-//       color: '#7B8EF9'
-//     }
-//     let vids = new VimeoPlaylist('js-player', options).init()
-//
-//     console.log('req', vids)
-//   })
+// Normally, include via NPM
+// import VimeoPlaylist form 'vimeoplaylist'
 
+import VimeoPlaylist from '../../../../src/VimeoPlaylist.js'
+
+// External Data
+import data from '../data/playlist.json'
+
+// Plugin Options
 let options = {
-  playlist: data,
   hasPlaylist: true,
-  playlistOutput: '#js-playlist',
-  muted: true,
-  controls: true,
-  fullScreenToggle: true,
-  color: '#6c77f7'
+  color: '#6c77f7',
+  fullscreenToggle:  '#js-vp-fstoggle',
+  fullscreenToggleKeyCode: 'Digit1',
+  hasPlaylist: true,
+  playlistOutput: '#js-vp-playlist',
+  playlist: data
 }
 
-let vids = new VimeoPlaylist('js-player', options).init()
+// Init on #js-player
+let vids = new VimeoPlaylist('js-vp-player', options).init()

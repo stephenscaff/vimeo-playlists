@@ -60,7 +60,7 @@ VimeoPlaylist.prototype = {
    * @return {Boolean}
    */
   hasPlayerId(el) {
-    if (hasEl(el)) {
+    if (!hasEl(`#${el}`)) {
       console.warn(
         'VimeoPlaylist: 😜 Dood, provide a valid ID to render Vimeo Player'
       )
@@ -197,7 +197,12 @@ VimeoPlaylist.prototype = {
         counter++
         let tmpl = plistItemTemplate(obj[0])
         let frag = createFrag(tmpl, 'article', 'plist-item')
-        if (this.playlistOutput) this.playlistOutput.appendChild(frag)
+
+        if (this.playlistOutput) {
+          this.playlistOutput.appendChild(frag)
+        } else {
+          console.warn('VimeoPlaylist: Yo, provide a valid playlist id')
+        }
 
         if (counter === this.vidCount) {
           this.setupFirstVid()
@@ -351,9 +356,9 @@ VimeoPlaylist.defaults = {
   controls: true,
   autoplay: true,
   color: '#7B8EF9',
-  fullscreenToggle: '#js-vp-fstoggle',
+  fullscreenToggle:  '#js-vp-fstoggle',
   fullscreenToggleKeyCode: 'Digit1',
-  hasPlaylist: false,
+  hasPlaylist: true,
   playlistOutput: '#js-vp-playlist',
   playlistNavNext: '#js-vp-next',
   playlistNavPrev: '#js-vp-prev',
