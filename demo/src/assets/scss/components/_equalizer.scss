@@ -2,7 +2,7 @@
 :root {
   --eq-height: 12px;
 }
-@media (min-width: $mq-med) {
+@media (min-width: $mq-md) {
   :root {
     --eq-height: 20px;
   }

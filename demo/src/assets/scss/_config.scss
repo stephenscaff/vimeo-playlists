@@ -11,9 +11,9 @@
 //----------------------------------------------
 // Fonts
 //----------------------------------------------
-$font-header: "maax", Helvetica, sans-serif;
-$font-paragraph: "maax", Helvetica, sans-serif;
-$font-mono: "maax-mono", monospace;
+$font-header: 'Work Sans', sans-serif;
+$font-paragraph: 'Work Sans', sans-serif;
+$font-mono: 'IBM Plex Mono', monaco, monospace;
 
 //----------------------------------------------
 // Fonts: Lineheight
@@ -23,15 +23,15 @@ $base-lineheight: 1.6;
 //----------------------------------------------
 // Fonts: Size variables
 //----------------------------------------------
-$font-size-xxxl: 3em;
-$font-size-xxl: 2.5em;
+$font-size-xl3: 3em;
+$font-size-xl2: 2.5em;
 $font-size-xl: 2em;
 $font-size-lg: 1.5em;
-$font-size-med: 1.1em;
+$font-size-md: 1.1em;
 $font-size-base: 1em;
 $font-size-sm: 0.85em;
 $font-size-xs: 0.7em;
-$font-size-xxs: 0.7rem;
+$font-size-xs2: 0.7rem;
 
 
 //----------------------------------------------
@@ -42,37 +42,35 @@ $mq-xsmall: 22em;
 // Phone
 $mq-sm: 32em;
 // Tablet
-$mq-med: 54em;
+$mq-md: 54em;
 // Laptop
 $mq-lg: 67em;
 // Past laptop
 $mq-xl: 94em;
 // Mid-size monitor
-$mq-xxl: 115em;
+$mq-xl2: 115em;
 // Thunderbold goes to 157em
-$mq-xxxl: 130em;
+$mq-xl3: 130em;
 
 
 //----------------------------------------------
 // Grid
 //----------------------------------------------
 $grid-width:          92%;
-$grid-width-lg:       88%;
 $grid-max-width-sm:   41em;
 $grid-max-width:      46em;
-$grid-max-width-med:  52em;
+$grid-max-width-md:  52em;
 $grid-max-width-lg:   62em;
 $grid-max-width-xl:   90%;
-$grid-max-width-xxl:  95%;
 
 //----------------------------------------------
 // Spacings (pad/margin)
 //----------------------------------------------
 $pad-scale: 1em;
-$pad-xxs:   $pad-scale / 2;
+$pad-xs2:   0.5em;
 $pad-xs:    $pad-scale;
 $pad-sm:    $pad-xs + $pad-xs;
-$pad-med:   $pad-sm + $pad-xs;
+$pad-md:   $pad-sm + $pad-xs;
 $pad:       $pad-sm + $pad-sm;
 $pad-lg:    $pad + $pad-sm;
 $pad-xl:    $pad + $pad;

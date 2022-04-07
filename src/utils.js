@@ -1,5 +1,4 @@
 'use strict'
-import fetch from 'node-fetch'
 
 /**
  * Fetch Data utility

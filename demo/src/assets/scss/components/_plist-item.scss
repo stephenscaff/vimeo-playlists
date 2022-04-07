@@ -85,7 +85,7 @@
     padding: 0.25em 0em 0 $plist-col-pad;
     transition: opacity 0.5s ease;
 
-    @media (min-width: $mq-med) {
+    @media (min-width: $mq-md) {
       padding: 0.5em 0em 0 $plist-col-pad;
     }
 
@@ -98,11 +98,11 @@
     display: block;
     margin-bottom: 0.3em;
     font-weight: 700;
-    font-size: $font-size-med;
+    font-size: $font-size-md;
     line-height: 1;
     @include text-overflow($max-width: 80%);
 
-    @media (min-width: $mq-med) {
+    @media (min-width: $mq-md) {
       margin-bottom: 0.5em;
     }
     .plist__link:hover &{

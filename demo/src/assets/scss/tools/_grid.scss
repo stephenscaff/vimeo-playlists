@@ -7,13 +7,13 @@
 //  @param $width (size), $mobile (boolean)
 //----------------------------------------------
 @mixin flex-col(
-$smallest:null,
+$xs:null,
 $sm:null,
-$med:null,
+$md:null,
 $lg:null){
-  flex-basis: $smallest;
-  width: $smallest;
-  max-width: $smallest;
+  flex-basis: $xs;
+  width: $xs;
+  max-width: $xs;
 
   @if $sm  {
     @media (min-width: $mq-sm){
@@ -23,11 +23,11 @@ $lg:null){
     }
   }
 
-  @if $med {
-    @media (min-width: $mq-med){
-      flex-basis: $med;
-      width: $med;
-      max-width: $med;
+  @if $md {
+    @media (min-width: $mq-md){
+      flex-basis: $md;
+      width: $md;
+      max-width: $md;
     }
   }
 

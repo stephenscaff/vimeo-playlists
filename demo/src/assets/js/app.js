@@ -3,7 +3,7 @@
 // Normally, include via NPM
 // import VimeoPlaylist form 'vimeoplaylist'
 
-import VimeoPlaylist from '../../../../src/VimeoPlaylist.js'
+import VimeoPlaylist from '../../../../src'
 
 // External Data
 import data from '../data/playlist.json'
@@ -11,13 +11,13 @@ import data from '../data/playlist.json'
 // Plugin Options
 let options = {
   hasPlaylist: true,
+  playlist: data,
+  playlistOutput: '#js-vp-playlist',
   color: '#6c77f7',
   fullscreenToggle:  '#js-vp-fstoggle',
-  fullscreenToggleKeyCode: 'Digit1',
-  hasPlaylist: true,
-  playlistOutput: '#js-vp-playlist',
-  playlist: data
+  fullscreenToggleKeyCode: 'Digit1'
 }
 
 // Init on #js-player
-let vids = new VimeoPlaylist('js-vp-player', options).init()
+const vids = new VimeoPlaylist('js-vp-player', options)
+vids.init()
