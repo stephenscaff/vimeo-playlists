@@ -3,6 +3,7 @@
 
 # App stuff
 .sass-cache
+.parcel-cache
 npm-debug.log
 node_modules
 dist

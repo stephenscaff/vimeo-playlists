@@ -6,6 +6,9 @@
     "type": "git",
     "url": "git+https://github.com/stephenscaff/vimeo-playlists.git"
   },
+  "bugs": {
+    "url": "https://github.com/stephenscaff/read-smore/issues"
+  },
   "keywords": [
     "vimeo",
     "vimeo api",
@@ -16,47 +19,36 @@
     "playlists"
   ],
   "author": "Stephen Scaff <stephenscaff.com>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/stephenscaff/vimeo-playlists.git#issues"
-  },
+  "license": "MIT",
   "homepage": "https://github.com/stephenscaff/vimeo-playlists.git#readme",
-  "main": "dist/VimeoPlaylist.js",
-  "umd:main": "dist/VimeoPlaylist.umd.js",
-  "module": "dist/VimeoPlaylist.module.js",
-  "source": "src/VimeoPlaylist.js",
+  "main": "dist/index.js",
+  "unpkg": "dist/index.umd.js",
   "files": [
     "dist"
   ],
+  "targets": {
+    "main": false,
+    "module": false,
+    "browser": false
+  },
   "scripts": {
     "clean": "rm -rf dist",
-    "build": "microbundle --no-sourcemap",
-    "dev": "parcel ./demo/src/index.html --out-dir ./demo/dist --no-cache",
-    "format": "prettier \"**/*.{js,md}\" --write",
-    "format:watch": "prettier '**/*.js' --write",
-    "lint": "eslint --ext .js src",
-    "prepare": "npm run build",
-    "prepublishOnly": "rm -rf ./dist && npm run build",
-    "demo:start": "parcel ./demo/src/index.html --out-dir ./demo/dist --no-cache",
-    "demo:build": "parcel build ./demo/src/index.html --out-dir ./demo/dist --public-url ./",
+    "build": "microbundle",
+    "dev": "npm run demo:start && microbundle watch",
+    "demo:start": "parcel ./demo/src/index.html --dist-dir ./demo/dist",
+    "demo:build": "parcel build ./demo/src/index.html --dist-dir ./demo/dist --public-url ./",
     "demo:deploy": "npm run demo:build && gh-pages -d ./demo/dist",
-    "demo:clean": "rm -rf ./demo/dist"
+    "demo:clean": "rm -rf ./demo/dist",
+    "lint": "eslint ./src/**js --fix"
   },
   "dependencies": {
-    "@vimeo/player": "^2.10.0",
-    "assets": "^3.0.1",
-    "dist": "^0.1.2",
-    "gh-pages": "^3.1.0",
-    "node-fetch": "^3.1.1",
-    "src": "^1.1.2"
+    "@vimeo/player": "^2.16.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.10.5",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^7.5.0",
-    "microbundle": "^0.12.3",
-    "parcel-bundler": "^1.12.4",
-    "prettier": "^2.0.5",
-    "sass": "^1.26.10"
+    "@parcel/transformer-sass": "^2.3.2",
+    "eslint": "^8.11.0",
+    "gh-pages": "^3.2.3",
+    "microbundle": "^0.14.2",
+    "parcel": "^2.3.2"
   }
 }

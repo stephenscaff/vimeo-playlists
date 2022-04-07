@@ -1,16 +1,16 @@
 .player {
   padding: $pad-xs 0 $pad-sm;
 
-  @media (min-width: $mq-med) {
+  @media (min-width: $mq-md) {
     padding: $pad-sm 0;
   }
 
   &__grid {
     @extend %grid;
     @media (min-width: $mq-lg) {
-      max-width: $grid-max-width-med;
+      max-width: $grid-max-width-md;
     }
-    @media (min-width: $mq-xxl) {
+    @media (min-width: $mq-xl2) {
       max-width: $grid-max-width-lg;
     }
   }

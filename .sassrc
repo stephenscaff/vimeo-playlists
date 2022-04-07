@@ -1,4 +1,4 @@
 {
   "includePaths": ["node_modules"],
-  outputStyle: "compressed",
+  "outputStyle": "compressed"
 }

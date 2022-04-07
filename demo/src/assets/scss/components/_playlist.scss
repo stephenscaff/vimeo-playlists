@@ -14,7 +14,7 @@ $plist-col-pad: 1em;
   // Grid / Container
   &__grid {
     @extend .grid;
-    @media (min-width: $mq-med) {
+    @media (min-width: $mq-md) {
       max-width: $grid-max-width-sm;
     }
   }
@@ -56,7 +56,7 @@ $plist-col-pad: 1em;
       fill: $color-alpha;
     }
 
-    @media (max-width: $mq-med) {
+    @media (max-width: $mq-md) {
       display: none;
     }
   }
@@ -83,7 +83,7 @@ $plist-col-pad: 1em;
 // Creates a scrolling playlist,
 //----------------------------------------------
 .playlist.has-scroller {
-   @media (min-width: $mq-med) {
+   @media (min-width: $mq-md) {
      & {
        padding: 0;
      }

@@ -1,12 +1,4 @@
-//----------------------------------------------
-//  Main app.css build
-//  --
-//  Tools:        mixins, extends, modules
-//  Base:         Styles for base level elements
-//  Components:   Modular components. Most styles will go here
-//  Utils:        Helpers, Utilities, Animations
-//----------------------------------------------
-
+// Main app styles
 //----------------------------------------------
 // Master Config and Vars
 //----------------------------------------------
@@ -33,8 +25,6 @@
 //----------------------------------------------
 @import 'components/_app-header';
 @import 'components/_app-footer';
-@import 'components/_app-layout';
-@import 'components/_app-footer';
 @import 'components/_equalizer';
 @import 'components/_player';
 @import 'components/_playlist';
@@ -44,4 +34,3 @@
 // Utils
 //----------------------------------------------
 @import 'utils/_grid';
-@import 'utils/_theme';

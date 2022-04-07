@@ -8,7 +8,7 @@ import plistItemTemplate from './plist.tmpl'
 /**
  * VimeoPlaylist
  * Class for interacting with the Vimeo API
- * to create a continous playlist of vidsr
+ * to create a continous playlist of Vimeo vids
  * @constructor
  * @requires @vimeo/player
  * @param {DOMElement} el - player element passed to Vimeo's imported Player class.
