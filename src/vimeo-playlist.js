@@ -3,7 +3,7 @@
 
 import Player from '@vimeo/player'
 import { fetchData, createFrag, hasEl } from './utils'
-import plistItemTemplate from './plist.tmpl'
+import playlistTmpl from './plist.tmpl'
 
 /**
  * VimeoPlaylist
@@ -192,10 +192,11 @@ VimeoPlaylist.prototype = {
     this.playlist.forEach((plist) => {
       let id = plist.id
       let vidInfo = fetchData('https://vimeo.com/api/v2/video/' + id + '.json')
-
+      // if (!vidInfo) return
       vidInfo.then((obj) => {
         counter++
-        let tmpl = plistItemTemplate(obj[0])
+        let tmpl = this.playlistTmpl(obj[0])
+        //let tmpl = plistItemTemplate(obj[0])
         let frag = createFrag(tmpl, 'article', 'plist-item')
 
         if (this.playlistOutput) {
@@ -223,6 +224,9 @@ VimeoPlaylist.prototype = {
   setupFirstVid() {
     if (this.playlistItems)
       this.playlistItems[0].classList.add(this.activeClass)
+      console.log(this.player.element)
+      this.player.element.setAttribute("allow", "autoplay")
+    //   this.player.setAttribute("allow", "autoplay");
     this.player['play']()
   },
 
@@ -352,7 +356,7 @@ VimeoPlaylist.defaults = {
   width: 900,
   loop: false,
   title: false,
-  muted: false,
+  muted: true,
   controls: true,
   autoplay: true,
   color: '#7B8EF9',
@@ -362,7 +366,8 @@ VimeoPlaylist.defaults = {
   playlistOutput: '#js-vp-playlist',
   playlistNavNext: '#js-vp-next',
   playlistNavPrev: '#js-vp-prev',
-  playlist: []
+  playlist: [],
+  playlistTmpl: playlistTmpl
 }
 
 export default VimeoPlaylist

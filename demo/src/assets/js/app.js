@@ -2,11 +2,12 @@
 
 // Normally, include via NPM
 // import VimeoPlaylist form 'vimeoplaylist'
-
 import VimeoPlaylist from '../../../../src'
 
 // External Data
-import data from '../data/playlist.json'
+import data from './playlist.json'
+// Custom Playlist Item Template
+import playlistTmpl from './plist.tmpl'
 
 // Plugin Options
 let options = {
@@ -15,7 +16,8 @@ let options = {
   playlistOutput: '#js-vp-playlist',
   color: '#6c77f7',
   fullscreenToggle:  '#js-vp-fstoggle',
-  fullscreenToggleKeyCode: 'Digit1'
+  fullscreenToggleKeyCode: 'Digit1',
+  playlistTmpl: playlistTmpl
 }
 
 // Init on #js-player

@@ -1,6 +1,6 @@
 'use strict'
 
-import { formatTime } from './utils'
+import { formatTime } from '../../../../src'
 
 /**
  * plistTemplate
@@ -26,7 +26,11 @@ export default function playlistTmpl(data) {
         <span class="plist-item__title">${data.title}</span>
         <span class="plist-item__user">${data.user_name}</span>
         <span class="plist-item__time-dur">${timeDuration}</span>
-
+        <div class="equalizer">
+          <span class="equalizer__item"></span>
+          <span class="equalizer__item"></span>
+          <span class="equalizer__item"></span>
+        </div>
       </div>
     </a>
   `

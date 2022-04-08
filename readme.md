@@ -3,13 +3,13 @@
 A JS lib using the Vimeo Player API to create a playlist of Vimeo Vids (from Vimeo IDs).
 
 Features
-- Playlist built with array of Vimeo IDs or external JSON file
-- UI for playlist items
-- Output of Player, Playlist, Playlist Nav, Fullscreen Toggle conforms to your markup/setup
-- Continuous `autoplay` of playlist items
-- Equalizer animation when playing
-- Playlist navigation,
+- Playlist built with array of Vimeo IDs or external JSON file.sss
+- Customize playlist item UI via option for custom template.
+- Output of Player, Playlist, Playlist Nav, Fullscreen Toggle conforms to your markup/setup.
+- Continuous `autoplay` of playlist items.
+- Full playlist controls for navigation, play/pause, etc.
 - Fullscreen API control
+- Equalizer animation when playing provided in default playlist item template.
 - Vimeo API options like `width`, `color`, `player controls`, `muted`, `title`
 - and other _maybe_ useful options.
 
@@ -20,7 +20,7 @@ Features
 
 ## 📦 Dependencies
 
-- `@vimeo/player`(derps)
+- `@vimeo/player`
 
 
 ## Quickstart
@@ -32,7 +32,7 @@ Features
 
 **JS**
 ```
-import VimeoPlaylist form 'vimeoplaylist'
+import VimeoPlaylist from 'vimeoplaylist'
 
 // Plugin Options (with internal data array)
 let options = {
@@ -67,8 +67,7 @@ let vids = new VimeoPlaylist('js-player', options).init()
 ```
 
 **Styles**
-Wanted to keep the concerns seperate,, but see the `demo` project for some bsic styles/scss if you don't wanna hand roll your own.
-
+While the core lib does include styles, in order to keep concerns seperate, see the demo project for basesline styles that you can clone as a starting point.
 
 ## 🤖 Project Commands
 
