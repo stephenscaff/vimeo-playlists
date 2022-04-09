@@ -22,6 +22,8 @@ Simply define your markup and playlist template, pass an array of Vimeo IDs, pro
 - Full playlist controls for navigation, play/pause, etc.
 - Fullscreen API control
 - Supports Vimeo API options like `width`, `color`, `player controls`, `muted`, `title`
+- Hybrid NPM module, works with `import` and `require`
+
 <br> 
 
 ## 📦 Dependencies
@@ -239,7 +241,7 @@ let vplaylist = new VimeoPlaylist('js-player', options)
 vplaylist.init()
 ```
 
-### JS Example - Data as External JSON File (with `Request()`)
+#### JS Example - Data as External JSON File (with `Request()`)
 
 ```
 import VimeoPlaylist from 'vimeoplaylist'
@@ -421,8 +423,8 @@ let options = {
 
 - ~~Option for custom playlist template~~
 - ~~Document availble data options from Vimeo's reponse object for playlist template.~~
+- ~~Make hybrid npm module to support `import` and `require`~~.
 - Refactor how video id's are fetched, providing better error handling for 404'd items.
-- Make hybrid npm module to support `import` and `require`.
 - Since autoplay on load only works if muted due to Chrome policy, provide a button to unmute.
 - Provide a util method for ellapsed time.
 - Provide destory method
