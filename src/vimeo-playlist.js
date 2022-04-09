@@ -5,6 +5,28 @@ import Player from '@vimeo/player'
 import { fetchData, createFrag, hasEl } from './utils'
 import playlistTmpl from './plist.tmpl'
 
+
+/**
+ * Default Options
+ */
+ VimeoPlaylist.defaults = {
+  width: 900,
+  loop: false,
+  title: false,
+  muted: true,
+  controls: true,
+  autoplay: true,
+  color: '#7B8EF9',
+  fullscreenToggle:  '#js-vp-fstoggle',
+  fullscreenToggleKeyCode: 'Digit1',
+  hasPlaylist: true,
+  playlistOutput: '#js-vp-playlist',
+  playlistNavNext: '#js-vp-next',
+  playlistNavPrev: '#js-vp-prev',
+  playlist: [],
+  playlistTmpl: playlistTmpl
+}
+
 /**
  * VimeoPlaylist
  * Class for interacting with the Vimeo API
@@ -202,7 +224,7 @@ VimeoPlaylist.prototype = {
         if (this.playlistOutput) {
           this.playlistOutput.appendChild(frag)
         } else {
-          console.warn('VimeoPlaylist: Yo, provide a valid playlist id')
+          console.warn('VimeoPlaylist: Provide a valid playlist id')
         }
 
         if (counter === this.vidCount) {
@@ -222,11 +244,10 @@ VimeoPlaylist.prototype = {
    * @fires { player['play'] }
    */
   setupFirstVid() {
-    if (this.playlistItems)
-      this.playlistItems[0].classList.add(this.activeClass)
-      console.log(this.player.element)
-      this.player.element.setAttribute("allow", "autoplay")
-    //   this.player.setAttribute("allow", "autoplay");
+    if (!this.playlistItems) return
+    this.playlistItems[0].classList.add(this.activeClass)
+    // console.log(this.player.element)
+    this.player.element.setAttribute("allow", "autoplay")
     this.player['play']()
   },
 
@@ -349,25 +370,6 @@ VimeoPlaylist.prototype = {
   }
 }
 
-/**
- * Default Options
- */
-VimeoPlaylist.defaults = {
-  width: 900,
-  loop: false,
-  title: false,
-  muted: true,
-  controls: true,
-  autoplay: true,
-  color: '#7B8EF9',
-  fullscreenToggle:  '#js-vp-fstoggle',
-  fullscreenToggleKeyCode: 'Digit1',
-  hasPlaylist: true,
-  playlistOutput: '#js-vp-playlist',
-  playlistNavNext: '#js-vp-next',
-  playlistNavPrev: '#js-vp-prev',
-  playlist: [],
-  playlistTmpl: playlistTmpl
-}
+
 
 export default VimeoPlaylist

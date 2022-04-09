@@ -8,8 +8,6 @@ $plist-col-pad: 1em;
 .playlist {
   top: $pad-sm;
   padding: 0 0 $pad;
-  //max-height: $playlist-max-height;
-  //overflow: hidden;
 
   // Grid / Container
   &__grid {

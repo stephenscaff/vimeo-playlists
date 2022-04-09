@@ -11,6 +11,7 @@ import { formatTime } from '../../../../src'
  */
 export default function playlistTmpl(data) {
   let timeDuration = formatTime(data.duration)
+  console.log(data)
 
   return `
     <a class="plist-item__link" data-vimeo-id="${data.id}" tabindex="0">
