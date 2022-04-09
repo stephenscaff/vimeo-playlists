@@ -5,6 +5,7 @@ A pure JavaScript library using the Vimeo Player API to create a continous and n
 Simply define your markup and playlist template, pass an array of Vimeo IDs, profit 💵 💵 💵.
 
 [Demo Playlist→](https://stephenscaff.github.io/vimeo-playlists/)
+<br> <br> 
 
 1. [📌 Features](#-features)
 2. [🎯 Quickstart](#-quickstart)
@@ -26,6 +27,7 @@ Simply define your markup and playlist template, pass an array of Vimeo IDs, pro
 ## 📦 Dependencies
 
 - `@vimeo/player`
+<br> <br> 
 
 ## 🎯 Quickstart
 
@@ -116,7 +118,7 @@ export default function playlistTmpl(data) {
 Styles have been left out fo the lib to maintain a seperation of concerns. However, the repo inlcudes a demo project that has
 
 While the core lib doesn't include styles, see the demo project in the repo for styles that you can clone as a starting point.
-<br> 
+<br> <br> 
 
 ## 🕹 Options
 
@@ -139,7 +141,8 @@ The options param supports the following properties:
 | `color`                   | `String (3 or 6 digit hex value)` | Player ui color                                          | `#7B8EF9`         |
 | `fullscreenToggle`        | `String / Element ID`             | id of fullscreen video toggle control                    | `#js-vp-fstoggle` |
 | `fullscreenToggleKeyCode` | `String / Element ID`             | full screen toggle keycode                               | `Digit1`          |
-<br> 
+
+<br>  
 
 ## 🤖 Project Commands
 
@@ -168,6 +171,7 @@ Runs the demo project via Parcel.
 #### Lint
 
 `npm run lint`
+
 <br> 
 
 ## 🕹️ Usage 
