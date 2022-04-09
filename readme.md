@@ -1,15 +1,16 @@
 # 📼 Vimeo Playlist
 
-A pure JS lib using the Vimeo Player API to create a continous and navigatable playlist (and interface) of Vimeo Videos. Simply define your markup and playlist template, then pass an array of Vimeo IDs.
+A pure JavaScript library using the Vimeo Player API to create a continous and navigatable playlist (and interface) of Vimeo Vids. 
+
+Simply define your markup and playlist template, pass an array of Vimeo IDs, profit 💵 💵 💵.
 
 [Demo Playlist→](https://stephenscaff.github.io/vimeo-playlists/)
 
-1. [📌 Features](#features)
-2. [🎯 Quickstart](#quickstart)
-3. [2 Options](#options)
-4. [🤖 Commands](#commands)
-5. [🕹️ Usage](#usage)
-6. [📅 Todos](#todos)
+1. [📌 Features](#-features)
+2. [🎯 Quickstart](#-quickstart)
+3. [🤖 Commands](#-commands)
+4. [🕹️ Usage](#-usage)
+5. [📅 Todos](#-todos)
 
 
 ## 📌 Features
@@ -21,12 +22,12 @@ A pure JS lib using the Vimeo Player API to create a continous and navigatable p
 - Fullscreen API control
 - Supports Vimeo API options like `width`, `color`, `player controls`, `muted`, `title`
 
-
+\
 ## 📦 Dependencies
 
 - `@vimeo/player`
 
-
+\
 ## 🎯 Quickstart
 
 #### 1. Install from NPM
@@ -70,8 +71,10 @@ let options = {
   ]
 }
 
-// Init on #js-player
+// Create instance on id #js-player
 let playlist = new VimeoPlaylist('js-player', options)
+
+// Init
 playlist.init()
 ```
 
@@ -115,6 +118,7 @@ Styles have been left out fo the lib to maintain a seperation of concerns. Howev
 
 pWhile the core lib doesn't include styles, see the demo project in the repo for styles that you can clone as a starting point.
 
+\
 ## 🕹 Options
 
 The options param supports the following properties:
@@ -137,7 +141,7 @@ The options param supports the following properties:
 | `fullscreenToggle`        | `String / Element ID`             | id of fullscreen video toggle control                    | `#js-vp-fstoggle` |
 | `fullscreenToggleKeyCode` | `String / Element ID`             | full screen toggle keycode                               | `Digit1`          |
 
-
+\
 ## 🤖 Project Commands
 
 #### Install Project Deps
@@ -166,6 +170,7 @@ Runs the demo project via Parcel.
 
 `npm run lint`
 
+\
 ## 🕹️ Usage 
 
 Viemo IDs can be provided to the `playlist` option directly, as an Array of objects, or as an external JSON file.
