@@ -355,19 +355,19 @@ Your template's data param can use to following properties from Vimeo's reponse 
 | stats_number_of_likes    | `number`          | Number of vid's likes                  |
 | stats_number_of_plays    | `number`          | Number of vid's plays                  |
 | tags                     | `string`          | Comma seperated tags                   |
-| thumbnail_large          | `(string|link)`   | Large format vid thumb                 |
-| thumbnail_medium         | `(string|link)`   | Med format vid thumb                   |
-| thumbnail_small          | `(string|link)`   | Small format thumb                     |
+| thumbnail_large          | `(string\|link)`   | Large format vid thumb                 |
+| thumbnail_medium         | `(string\|link)`   | Med format vid thumb                   |
+| thumbnail_small          | `(string\|link)`   | Small format thumb                     |
 | title                    | `string`          | Vid title                              | 
-| upload_date              | `(string|date)`   | Upload date ie "2019-01-18 10:22:32"   |
-| url                      | `(string|link)`   | Vid URL                                |
+| upload_date              | `(string\|date)`   | Upload date ie "2019-01-18 10:22:32"   |
+| url                      | `(string\|link)`   | Vid URL                                |
 | user_id                  | `number`          | User ID                                |
 | user_name                | `string`          | User name                              |
-| user_portrait_huge       | `(string|link)`   | User image 300x300px                   |
-| user_portrait_large      | `(string|link)`   | User image 100x100px                   |
-| user_portrait_medium     | `(string|link)`   | User image 75x75px                     |
-| user_portrait_small      | `(string|link)`   | User image 30x30px                     |
-| user_url                 | `(string|link)`   | User url                               |
+| user_portrait_huge       | `(string\|link)`   | User image 300x300px                   |
+| user_portrait_large      | `(string\|link)`   | User image 100x100px                   |
+| user_portrait_medium     | `(string\|link)`   | User image 75x75px                     |
+| user_portrait_small      | `(string\|link)`   | User image 30x30px                     |
+| user_url                 | `(string\|link)`   | User url                               |
 | width                    | `number`          | Video width in px                      |
 
 
