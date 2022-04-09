@@ -15,12 +15,12 @@ Simply define your markup and playlist template, pass an array of Vimeo IDs, pro
 <br/><br/> 
 
 ## 📌 Features
-- Build playlist with array of Vimeo IDs or external JSON file
-- Structre / Output of Player, Playlist, Playlist Nav, and controls customizable.
-- Customize playlist item UI via option for custom template. Default template included.
+- Builds a playlist from array of Vimeo IDs, inline or as external JSON file
+- Follows your structre / markup of Player, Playlist, and controls.
+- Playlist item UI is controled by your custom template (default included).
 - Supports continuous `autoplay` of playlist items. (Can `autoplay` on load if `muted` is also `true` cause of Chrome autoplay policy.)
-- Full playlist controls for navigation, play/pause, etc.
-- Fullscreen API control
+- Offers full playlist controls for navigation, play/pause, etc. 
+- Offers Fullscreen API control
 - Supports Vimeo API options like `width`, `color`, `player controls`, `muted`, `title`
 - Hybrid NPM module, works with `import` and `require`
 
