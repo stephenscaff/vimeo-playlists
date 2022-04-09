@@ -11,7 +11,7 @@ Simply define your markup and playlist template, pass an array of Vimeo IDs, pro
 3. [🤖 Commands](#-commands)
 4. [🕹️ Usage](#-usage)
 5. [📅 Todos](#-todos)
-
+<br/><br/> 
 
 ## 📌 Features
 - Build playlist with array of Vimeo IDs or external JSON file
