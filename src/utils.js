@@ -7,7 +7,6 @@ import fetch from 'isomorphic-fetch'
  * @param {string || Request} url
  */
 export function fetchData(url) {
-  console.log('fetch data')
   return fetch(url)
     .then(checkError)
     .then((json) => {
@@ -24,16 +23,8 @@ export function fetchData(url) {
 function checkError(res) {
   if (!res.ok) {
     throw Error(res.statusText);
-}
-return res.json();
-
-
-  // if (res.status >= 200 && res.status <= 299) {
-  //   console.log('errors', res )
-  //   return res.json();
-  // } else {
-  //   throw Error(res.statusText);
-  // }
+  }
+  return res.json();
 }
 
 /**

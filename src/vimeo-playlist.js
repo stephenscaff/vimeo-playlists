@@ -5,7 +5,6 @@ import Player from '@vimeo/player'
 import { fetchData, createFrag, hasEl } from './utils'
 import playlistTmpl from './plist.tmpl'
 
-
 /**
  * Default Options
  */

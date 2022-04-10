@@ -22,4 +22,5 @@ let options = {
 
 // Init on #js-player
 const vids = new VimeoPlaylist('js-vp-player', options)
+
 vids.init()
