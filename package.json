@@ -50,6 +50,6 @@
     "eslint": "^8.11.0",
     "gh-pages": "^3.2.3",
     "microbundle": "^0.14.2",
-    "parcel": "^2.3.2"
+    "parcel": "^2.4.1"
   }
 }
