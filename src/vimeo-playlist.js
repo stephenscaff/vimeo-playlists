@@ -23,6 +23,7 @@ import playlistTmpl from './plist.tmpl'
   playlistOutput: '#js-vp-playlist',
   playlistNavNext: '#js-vp-next',
   playlistNavPrev: '#js-vp-prev',
+  supportsKeyNav: true,
   playlist: [],
   playlistTmpl: playlistTmpl
 }
@@ -121,6 +122,7 @@ VimeoPlaylist.prototype = {
     this.onPlay()
     this.onFullScreenToggle()
     this.handleNavClicks()
+    if (this.supportsKeyNav) this.handleKeyNav()
   },
 
   /**
@@ -246,7 +248,6 @@ VimeoPlaylist.prototype = {
   setupFirstVid() {
     if (!this.playlistItems) return
     this.playlistItems[0].classList.add(this.activeClass)
-    // console.log(this.player.element)
     this.player.element.setAttribute("allow", "autoplay")
     this.player['play']()
   },
@@ -290,6 +291,21 @@ VimeoPlaylist.prototype = {
         this.next()
       })
     }
+  },
+
+  /**
+   * Handle Key Navigation 
+   * Keydown listener for next/prev arrow keys control
+   */
+  handleKeyNav() {
+    document.addEventListener(
+      "keydown",
+      (event) => {
+        if (event.code == "ArrowRight") this.next();
+        if (event.code == "ArrowLeft") this.prev();
+      },
+      false
+    )
   },
 
   /**

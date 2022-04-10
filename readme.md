@@ -5,21 +5,26 @@ A pure JavaScript library using the Vimeo Player API to create a continous and n
 Simply define your markup and playlist template, pass an array of Vimeo IDs, profit 💵 💵 💵.
 
 [Demo Playlist→](https://stephenscaff.github.io/vimeo-playlists/)
-<br> <br> 
+
+<br> 
+
+## Contents 
 
 1. [📌 Features](#-features)
 2. [🎯 Quickstart](#-quickstart)
 3. [🤖 Commands](#-commands)
 4. [🕹️ Usage](#-usage)
 5. [📅 Todos](#-todos)
-<br/><br/> 
+
+<br/> 
 
 ## 📌 Features
-- Builds a playlist from array of Vimeo IDs, inline or as external JSON file
-- Follows your structre / markup of Player, Playlist, and controls.
-- Playlist item UI is controled by your custom template (default included).
+- Builds a video playlist from an array of Vimeo IDs, inline or as external JSON file
+- UI consists of Video Player, Playlist (optional), Playlist Controls (optional).
+- UI conforms to your structre / markup / selectors.
+- Control Playlist items via customize template (default included).
 - Supports continuous `autoplay` of playlist items. (Can `autoplay` on load if `muted` is also `true` cause of Chrome autoplay policy.)
-- Offers full playlist controls for navigation, play/pause, etc. 
+- Offers full playlist controls for navigation, play/pause, etc. Includes arrow key nav
 - Offers Fullscreen API control
 - Supports Vimeo API options like `width`, `color`, `player controls`, `muted`, `title`
 - Hybrid NPM module, works with `import` and `require`
@@ -134,6 +139,7 @@ The options param supports the following properties:
 | `playlistNavNext`         | `String / Element ID`             | id of Next element                                       | `#js-vp-next`     |
 | `playlist`                | `Array of Objects`                | playlist as array of objects { "id" : <vimeoid> }        | `[]`              |
 | `playlistTemplate`        | `HTML Template Literal`           | Template for playlist Items                              | Template found at plist.tmpl.js             |
+| `supportsKeyNav`          | `Boolean`                         | Enables next/prev key nav                                | `true`            |  
 | `width`                   | `Number`                          | Video width in px                                        | `900`             |
 | `title`                   | `Boolean`                         | Show video title                                         | `false`           |
 | `muted`                   | `Boolean`                         | Mute vids                                                | `false`           |
