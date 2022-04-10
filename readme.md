@@ -5,14 +5,18 @@ A pure JavaScript library using the Vimeo Player API to create a continous and n
 Simply define your markup and playlist template, pass an array of Vimeo IDs, profit 💵 💵 💵.
 
 [Demo Playlist→](https://stephenscaff.github.io/vimeo-playlists/)
-<br> <br> 
+
+<br> 
+
+## Contents 
 
 1. [📌 Features](#-features)
 2. [🎯 Quickstart](#-quickstart)
 3. [🤖 Commands](#-commands)
 4. [🕹️ Usage](#-usage)
 5. [📅 Todos](#-todos)
-<br/><br/> 
+
+<br/> 
 
 ## 📌 Features
 - Builds a playlist from array of Vimeo IDs, inline or as external JSON file
