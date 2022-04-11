@@ -12,20 +12,21 @@ Simply define your markup and playlist template, pass an array of Vimeo IDs, pro
 
 1. [📌 Features](#-features)
 2. [🎯 Quickstart](#-quickstart)
-3. [🤖 Commands](#-commands)
-4. [🕹️ Usage](#-usage)
-5. [📅 Todos](#-todos)
+3. [🕹 Options](#-options)
+4. [🤖 Commands](#-commands)
+5. [🕹️ Usage](#-usage)
+6. [📅 Todos](#-todos)
 
 <br/> 
 
 ## 📌 Features
-- Builds a video playlist from an array of Vimeo IDs, inline or as external JSON file
-- UI consists of Video Player, Playlist (optional), Playlist Controls (optional).
-- UI conforms to your structre / markup / selectors.
-- Control Playlist items via customize template (default included).
-- Supports continuous `autoplay` of playlist items. (Can `autoplay` on load if `muted` is also `true` cause of Chrome autoplay policy.)
-- Offers full playlist controls for navigation, play/pause, etc. Includes arrow key nav
-- Offers Fullscreen API control
+- Builds a playlist of Vimeo Videos from an array of Vimeo IDs
+- UI consists of Video Player, Playlist items (optional), Playlist controls (optional).
+- Super flexible - UI conforms to your structre / markup / selectors.
+- Playlist items authored via custom template (default included).
+- Supports continuous `autoplay`.
+- Customizable controls for navigation, play/pause, etc. Includes arrow key nav
+- Offers Fullscreen API control for Video player.
 - Supports Vimeo API options like `width`, `color`, `player controls`, `muted`, `title`
 - Hybrid NPM module, works with `import` and `require`
 
@@ -34,7 +35,8 @@ Simply define your markup and playlist template, pass an array of Vimeo IDs, pro
 ## 📦 Dependencies
 
 - `@vimeo/player`
-<br> <br> 
+
+<br>
 
 ## 🎯 Quickstart
 
@@ -44,6 +46,9 @@ Simply define your markup and playlist template, pass an array of Vimeo IDs, pro
 
 
 #### 2. Define Markup
+
+Create locations for Player, Nav and Playlist
+
 ```
 <!-- Player -->
 <div class="player">
@@ -57,40 +62,14 @@ Simply define your markup and playlist template, pass an array of Vimeo IDs, pro
 </nav>
 
 <!-- Playlist -->
-<div id="js-vp-playlist" class=""playlist>
+<div id="js-vp-playlist" class="playlist"></div>
 ```
 
-#### 3. Setup JS
-```
-import VimeoPlaylist from 'vimeoplaylist'
+#### 3. Create Playlist Item Template
 
-// Provide custom template for playist items
-import playlistTmpl from './plist.tmpl'
+Playlist items show info about the tracks (Ie: title, thumbnail, duraction, user, etc). Create a custom template literal (probaly as an external file) to display the info you'd like. The data paramater can access all video / user data returned by Vimeo respoinse object.
 
-// Plugin Options
-let options = {
-  hasPlaylist: true,
-  color: '#6c77f7',
-  playlistTmpl: playlistTmpl,
-  playlist: [
-    { "id": "288588748" },
-    { "id": "328536852" },
-    { "id": "281449879" }
-  ]
-}
-
-// Create instance on id #js-player
-let playlist = new VimeoPlaylist('js-player', options)
-
-// Init
-playlist.init()
-```
-
-#### 4. Define Playlist Item Template
-
-The playlist data paramater can access all video / user data returned by Vimeo respoinse object.
-
-[See available properties below](#available-vimeo-response-properties).
+[Full list of available properties here](#available-vimeo-response-properties).
 
 ```
 /**
@@ -121,11 +100,38 @@ export default function playlistTmpl(data) {
 }
 ```
 
-#### 5. Provide Styles
-Styles have been left out fo the lib to maintain a seperation of concerns. However, the repo inlcudes a demo project that has
+#### 4. Setup JS
 
-While the core lib doesn't include styles, see the demo project in the repo for styles that you can clone as a starting point.
-<br> <br> 
+Initizale the plugin on the defined selector, passing in options for our playlist template and playlist ids. (Complete list of [Options found here](#-options) )
+
+```
+import VimeoPlaylist from 'vimeoplaylist'
+
+// Provide custom template for playist items
+import playlistTmpl from './plist.tmpl'
+
+// Plugin Options
+let options = {
+  hasPlaylist: true,
+  playlistTmpl: playlistTmpl,
+  playlist: [
+    { "id": "288588748" },
+    { "id": "328536852" },
+    { "id": "281449879" }
+  ]
+}
+
+// Create instance on id #js-player
+let playlist = new VimeoPlaylist('js-vp-player', options)
+
+// Init
+playlist.init()
+```
+
+#### 5. Provide Styles
+Style as desired. While the core lib doesn't include styles, see the repo's demo project for styles that you can clone as a starting point.
+
+<br>
 
 ## 🕹 Options
 
@@ -184,17 +190,20 @@ Runs the demo project via Parcel.
 
 ## 🕹️ Usage 
 
-Viemo IDs can be provided to the `playlist` option directly, as an Array of objects, or as an external JSON file.
 
-#### JS Example - Data as array of IDs
+### Playlist Content
+
+Playlists are created from Vimeo IDs.
+
+Vimeo IDs can be provided to the `playlist` option directly, as an Array of objects, or as an external JSON file.
+
+#### Creating playlist of Vimeo Ids 
 
 ```
 import VimeoPlaylist form 'vimeoplaylist'
 
 // Plugin Options (with internal data array)
 let options = {
-  hasPlaylist: true,
-  playlistOutput: '#js-vp-playlist',
   playlist: [
     { "id": "288588748" },
     { "id": "328536852" },
@@ -208,7 +217,7 @@ let vplaylist = new VimeoPlaylist('js-player', options)
 // Init
 vplaylist.init()
 ```
-#### Example JSON file of IDs
+#### Vimeo IDs from JSON file
 
 To use external JSON file, setup you JSON like so:
 
@@ -227,15 +236,13 @@ To use external JSON file, setup you JSON like so:
   ....
 ```
 
-#### JS Example - Passing IDs as External JSON File (with Babel or Parcel)
+#### Passing IDs as external JSON file (with Babel or Parcel)
 
 ```
 import VimeoPlaylist from 'vimeoplaylist'
 import data from '../data/playlist.json'
 
 let options = {
-  hasPlaylist: true,
-  playlistOutput: '#js-vp-playlist',
   playlist: data,
   ...
 }
@@ -247,7 +254,7 @@ let vplaylist = new VimeoPlaylist('js-player', options)
 vplaylist.init()
 ```
 
-#### JS Example - Data as External JSON File (with `Request()`)
+#### Passing IDs as external JSON file with `Request()`
 
 ```
 import VimeoPlaylist from 'vimeoplaylist'
@@ -267,6 +274,7 @@ fetch(req)
     vplaylist.init()
 })
 ```
+<br>
 
 ### Markup / HTML
 
@@ -379,9 +387,9 @@ Your template's data param can use to following properties from Vimeo's reponse 
 | width                    | `number`          | Video width in px                      |
 
 
-### 🧭 Playlist Navigation
+### Playlist Navigation
 
-Options exist for playlist navigation.
+Playlist navigation contols next / prev buttons. You can use the default selectors or provide your own. Keynav arrows are also supported by default.
 
 #### Default Nav ids
 
@@ -392,7 +400,6 @@ Options exist for playlist navigation.
   <button id="js-vp-next" class="playlist__next">Next <i>→</i></button>
 </nav>
 ```
-
 #### Customize Nav Ids
 
 ```
