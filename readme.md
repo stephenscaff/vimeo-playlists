@@ -1,6 +1,6 @@
 # 📼 Vimeo Playlist
 
-A pure JavaScript library using the Vimeo Player API to create a continous and navigatable playlist (and interface) of Vimeo Vids. 
+A pure JavaScript library to create a continous playlist of Vimeo Videos. 
 
 Simply define your markup and playlist template, pass an array of Vimeo IDs, profit 💵 💵 💵.
 
@@ -12,7 +12,7 @@ Simply define your markup and playlist template, pass an array of Vimeo IDs, pro
 
 1. [📌 Features](#-features)
 2. [🎯 Quickstart](#-quickstart)
-3. [🕹 Options](#-options)
+3. [🧬 Options](#-options)
 4. [🤖 Commands](#-commands)
 5. [🕹️ Usage](#-usage)
 6. [📅 Todos](#-todos)
@@ -21,6 +21,7 @@ Simply define your markup and playlist template, pass an array of Vimeo IDs, pro
 
 ## 📌 Features
 - Builds a playlist of Vimeo Videos from an array of Vimeo IDs
+- Uses the Vimeo Player API
 - UI consists of Video Player, Playlist items (optional), Playlist controls (optional).
 - Super flexible - UI conforms to your structre / markup / selectors.
 - Playlist items authored via custom template (default included).
@@ -133,7 +134,7 @@ Style as desired. While the core lib doesn't include styles, see the repo's demo
 
 <br>
 
-## 🕹 Options
+## 🧬 Options
 
 The options param supports the following properties:
 

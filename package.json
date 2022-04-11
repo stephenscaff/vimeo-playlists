@@ -12,11 +12,10 @@
   "keywords": [
     "vimeo",
     "vimeo api",
+    "vimeo player api",
     "vimeo playlist",
     "video playlist",
-    "playlist",
-    "vimeo player",
-    "playlists"
+    "playlist"
   ],
   "author": "Stephen Scaff <stephenscaff.com>",
   "license": "MIT",
