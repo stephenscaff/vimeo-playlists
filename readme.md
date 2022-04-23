@@ -114,7 +114,7 @@ import playlistTmpl from './plist.tmpl'
 // Plugin Options
 let options = {
   hasPlaylist: true,
-  playlistTmpl: playlistTmpl,
+  itemTmpl: playlistTmpl,
   playlist: [
     { "id": "288588748" },
     { "id": "328536852" },
@@ -145,7 +145,9 @@ The options param supports the following properties:
 | `playlistNavPrev`         | `String / Element ID`             | id of Prev nav element                                   | `#js-vp-prev`     |
 | `playlistNavNext`         | `String / Element ID`             | id of Next element                                       | `#js-vp-next`     |
 | `playlist`                | `Array of Objects`                | playlist as array of objects { "id" : <vimeoid> }        | `[]`              |
-| `playlistTemplate`        | `HTML Template Literal`           | Template for playlist Items                              | Template found at plist.tmpl.js             |
+| `itemTmpl`                | `HTML Template Literal`           | Template for playlist Items                              | Template found at plist.tmpl.js               |
+| `itemName`                | `String`                          | Parent name of playlist Items (becomes parent class name) | `plist-item`              |
+| `itemTrigger`             | `String / Element selector`       | Wrapping Link selector (trigger) of playlist items (matching playlistTemplate)      | `plist-item__link`              |
 | `supportsKeyNav`          | `Boolean`                         | Enables next/prev key nav                                | `true`            |  
 | `width`                   | `Number`                          | Video width in px                                        | `900`             |
 | `title`                   | `Boolean`                         | Show video title                                         | `false`           |
@@ -314,11 +316,10 @@ let options = {
 
 ### Playlist Item Template
 
-The Playlist Items provide video and user info (ie: id, title, thubnails, url, duration, etc). 
+Each item in the playlist provides video and user info (ie: id, title, thubnails, url, duration, etc). 
 
-You can use the default template or provide your own template to customize the layout/markup of each playlist item. Simply create a template literal, perhaps as a seperate file, and pass its reference to the `itemTemplate` option.
+You can use the default template or provide your own to customize the layout/markup of each playlist item. Simply create a template literal, perhaps as a seperate file, and pass its reference to the `itemTmpl` option.
 
-Note: when a playlist item is playing, it will have an `is-playing` class to leverage.
 
 #### Playlist Template Example
 ```
@@ -344,7 +345,6 @@ export default function playlistTmpl(data) {
   `
 }
 ```
-
 ### Pass Playlist template 
 
 ```
@@ -352,7 +352,7 @@ import playlistTmpl from './plist.tmpl'
 
 let options = {
   hasPlaylist: true,
-  playlistTmpl: playlistTmpl,
+  itemTmpl: playlistTmpl,
   ...
 }
 ```
@@ -387,6 +387,21 @@ Your template's data param can use to following properties from Vimeo's reponse 
 | user_url                 | `(string\|link)`   | User url                               |
 | width                    | `number`          | Video width in px                      |
 
+
+#### Playlist Template Requirements 
+
+It's important that your playlist template at least have a wrapping trigger/link element as seen in the above example. 
+
+**Important:** 
+
+The `itemTrigger` option defines the playlist Item wrapping link/trigger used for click events. If you're passing your own `itemTmpl`, make sure to update the `itemTrigger` to match your link's selector name. Will refactor out this requirement in the future. 
+
+The `itemName` option is used to define the parent class name of the playlist item block. You might also want to make sure that has some relevance to how you organize item's class names.
+
+**Additional Notes**: 
+
+When a playlist item is playing, it will have an `is-playing` class to leverage. 
+When a playlist item is paused, it will have an `is-paused` class.
 
 ### Playlist Navigation
 
