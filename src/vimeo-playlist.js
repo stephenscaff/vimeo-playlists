@@ -2,7 +2,7 @@
 'use strict'
 
 import Player from '@vimeo/player'
-import { createFrag, hasEl, fetchAllVids } from './utils'
+import { createFrag, hasEl, fetchAllVimeoVids } from './utils'
 import playlistTmpl from './plist.tmpl'
 
 /**
@@ -207,16 +207,18 @@ VimeoPlaylist.prototype = {
 
   /**
    * Build Playlist from fetched vimeo vids
-   * Fetches vids in a promise.all, builds markup in a frag, adds to dom.
+   * Fetches vids inConstructs playlist markup from this.playlist by
+   * 
    * @external { fetchAllVids | createFrag }
    * @fires { setupFirstVid | handlePlaylistClicks}
    */
   buildPlaylist() {
     let counter = 0
-    const fetchedVids = fetchAllVids(this.playlist);
-    
+    const fetchedVids = fetchAllVimeoVids(this.playlist);
+
     fetchedVids.then((vids) => {
       vids.forEach((vid) => {
+        if (vid == undefined) return;
         let tmpl = this.itemTmpl(vid[0]);
         let frag = createFrag(tmpl, 'article', this.itemName)
         counter++
@@ -224,7 +226,7 @@ VimeoPlaylist.prototype = {
         if (this.playlistOutput) {
           this.playlistOutput.appendChild(frag)
         } else {
-          console.warn('VimeoPlaylist: Provide a valid playlist id')
+          console.warn('VimeoPlaylist: Provide a valid selector to output playlist')
         }
         
         if (counter === this.vidCount) {
