@@ -16,6 +16,23 @@ export function fetchData(url) {
 }
 
 /**
+ * Fetch all vimeo vids with Promise.all
+ * @param {Array} playlist - Array of objects that make upd 
+ * @returns {Promise} - Combined promises from api requestsn
+ */
+export function fetchAllVimeoVids(playlist) {
+  return Promise.all(playlist.map(request => {
+    return fetch(`https://vimeo.com/api/v2/video/${request.id}.json`)
+    .then((res)=>{ 
+      if (res.ok) return res.json(); 
+      else throw new Error("Status code error :" + res.status) 
+    })
+      .catch(err=>console.log(err))
+  }))
+}
+
+
+/**
  * Error check for Fetch
  * @param {Object} res - fetch response
  * @returns 

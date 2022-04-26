@@ -17,9 +17,10 @@ let options = {
   color: '#6c77f7',
   fullscreenToggle:  '#js-vp-fstoggle',
   fullscreenToggleKeyCode: 'Digit1',
-  playlistTmpl: playlistTmpl
+  itemTmpl: playlistTmpl
 }
 
 // Init on #js-player
-const vids = new VimeoPlaylist('js-vp-player', options).init()
+const vids = new VimeoPlaylist('js-vp-player', options)
+vids.init()
 

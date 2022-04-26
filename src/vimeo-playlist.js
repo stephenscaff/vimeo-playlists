@@ -2,7 +2,7 @@
 'use strict'
 
 import Player from '@vimeo/player'
-import { fetchData, createFrag, hasEl } from './utils'
+import { createFrag, hasEl, fetchAllVimeoVids } from './utils'
 import playlistTmpl from './plist.tmpl'
 
 /**
@@ -24,7 +24,9 @@ import playlistTmpl from './plist.tmpl'
   playlistNavPrev: '#js-vp-prev',
   supportsKeyNav: true,
   playlist: [],
-  playlistTmpl: playlistTmpl
+  itemTmpl: playlistTmpl,
+  itemName: 'plist-item',
+  itemTrigger: '.plist-item__link'
 }
 
 /**
@@ -101,6 +103,7 @@ VimeoPlaylist.prototype = {
     if (!this.player) return
     this.settings()
     this.listeners()
+    //if (this.hasPlaylist) this.buildPlaylist()
     if (this.hasPlaylist) this.buildPlaylist()
   },
 
@@ -203,41 +206,40 @@ VimeoPlaylist.prototype = {
   },
 
   /**
-   * Build Playlist
-   * Constructs playlist markup from this.playlist
-   * Fetches playlist info from Vimeo API
-   * @external { fetchData | createFrag }
+   * Build Playlist from fetched vimeo vids
+   * Fetches vids inConstructs playlist markup from this.playlist by
+   * 
+   * @external { fetchAllVids | createFrag }
    * @fires { setupFirstVid | handlePlaylistClicks}
    */
   buildPlaylist() {
     let counter = 0
+    const fetchedVids = fetchAllVimeoVids(this.playlist);
 
-    this.playlist.forEach((plist) => {
-      let id = plist.id
-      let vidInfo = fetchData('https://vimeo.com/api/v2/video/' + id + '.json')
-      // if (!vidInfo) return
-      vidInfo.then((obj) => {
+    fetchedVids.then((vids) => {
+      vids.forEach((vid) => {
+        if (vid == undefined) return;
+        let tmpl = this.itemTmpl(vid[0]);
+        let frag = createFrag(tmpl, 'article', this.itemName)
         counter++
-        let tmpl = this.playlistTmpl(obj[0])
-        //let tmpl = plistItemTemplate(obj[0])
-        let frag = createFrag(tmpl, 'article', 'plist-item')
 
         if (this.playlistOutput) {
           this.playlistOutput.appendChild(frag)
         } else {
-          console.warn('VimeoPlaylist: Provide a valid playlist id')
+          console.warn('VimeoPlaylist: Provide a valid selector to output playlist')
         }
-
+        
         if (counter === this.vidCount) {
           this.setupFirstVid()
           // define this.playlistItems
           if (!this.hasPlaylist) return
-          this.playlistItems = document.querySelectorAll('.plist-item__link')
+          this.playlistItems = document.querySelectorAll(this.itemTrigger)
           this.handlePlaylistClicks()
         }
-      })
-    })
+      });
+    });
   },
+
 
   /**
    * setupFirstVid
