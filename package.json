@@ -50,5 +50,6 @@
     "gh-pages": "^6.0.0",
     "microbundle": "^0.15.1",
     "parcel": "^2.10.1"
-  }
+  },
+  "type":"module"
 }
