@@ -1,6 +1,6 @@
 {
   "name": "vimeoplaylist",
-  "version": "2.1.3",
+  "version": "2.2.0",
   "description": "Create endless video playlists with the Vimeo Player API, with ",
   "repository": {
     "type": "git",
