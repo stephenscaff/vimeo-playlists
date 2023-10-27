@@ -8,7 +8,7 @@ import playlistTmpl from './plist.tmpl'
 /**
  * Default Options
  */
- VimeoPlaylist.defaults = {
+VimeoPlaylist.defaults = {
   width: 900,
   loop: false,
   title: false,
@@ -16,7 +16,7 @@ import playlistTmpl from './plist.tmpl'
   controls: true,
   autoplay: true,
   color: '#7B8EF9',
-  fullscreenToggle:  '#js-vp-fstoggle',
+  fullscreenToggle: '#js-vp-fstoggle',
   fullscreenToggleKeyCode: 'Digit1',
   hasPlaylist: true,
   playlistOutput: '#js-vp-playlist',
@@ -26,7 +26,8 @@ import playlistTmpl from './plist.tmpl'
   playlist: [],
   itemTmpl: playlistTmpl,
   itemName: 'plist-item',
-  itemTrigger: '.plist-item__link'
+  itemTrigger: '.plist-item__link',
+  debug: false
 }
 
 /**
@@ -58,6 +59,7 @@ function VimeoPlaylist(el, options) {
   this.isActive = false
   this.activeClass = 'is-playing'
   this.pausedClass = 'is-paused'
+  this.debug = this.debug
 
   this.player = new Player(el, {
     id: this.playlist[this.currentVidIdx].id,
@@ -85,9 +87,7 @@ VimeoPlaylist.prototype = {
    */
   hasPlayerId(el) {
     if (!hasEl(`#${el}`)) {
-      console.warn(
-        'VimeoPlaylist: 😜 Dood, provide a valid ID to render Vimeo Player'
-      )
+      console.warn('VimeoPlaylist: Provide a valid ID to render Vimeo Player')
       return false
     }
     return true
@@ -103,7 +103,6 @@ VimeoPlaylist.prototype = {
     if (!this.player) return
     this.settings()
     this.listeners()
-    //if (this.hasPlaylist) this.buildPlaylist()
     if (this.hasPlaylist) this.buildPlaylist()
   },
 
@@ -142,7 +141,7 @@ VimeoPlaylist.prototype = {
       })
       .catch((err) => {
         // @todo better error handling
-        console.error(err, 'error loading video')
+        if (this.debug) console.error(err, 'error loading video')
       })
   },
 
@@ -153,7 +152,7 @@ VimeoPlaylist.prototype = {
    */
   onEnd() {
     this.player.on('ended', () => {
-      console.info('ended')
+      if (this.debug) console.debug('ended')
       this.next()
     })
   },
@@ -164,7 +163,7 @@ VimeoPlaylist.prototype = {
    */
   onPause() {
     this.player.on('pause', () => {
-      console.info('pause')
+      if (this.debug) console.debug('pause')
       this.setPausedState()
     })
   },
@@ -176,7 +175,8 @@ VimeoPlaylist.prototype = {
    */
   onPlay() {
     this.player.on('play', () => {
-      console.info('play')
+      console.log('DEBUG', this.debug)
+      if (this.debug) console.debug('play')
       this.setActiveState()
     })
   },
@@ -197,7 +197,8 @@ VimeoPlaylist.prototype = {
       )
     }
     // FS Toggle Click
-    if (hasEl(`#${this.fullscreenToggle.id}`)) {
+
+    if (this.fullscreenToggle) {
       this.fullscreenToggle.addEventListener('click', (e) => {
         e.preventDefault()
         this.toggleFullscreen()
@@ -208,27 +209,29 @@ VimeoPlaylist.prototype = {
   /**
    * Build Playlist from fetched vimeo vids
    * Fetches vids inConstructs playlist markup from this.playlist by
-   * 
+   *
    * @external { fetchAllVids | createFrag }
    * @fires { setupFirstVid | handlePlaylistClicks}
    */
   buildPlaylist() {
     let counter = 0
-    const fetchedVids = fetchAllVimeoVids(this.playlist);
+    const fetchedVids = fetchAllVimeoVids(this.playlist)
 
     fetchedVids.then((vids) => {
       vids.forEach((vid) => {
-        if (vid == undefined) return;
-        let tmpl = this.itemTmpl(vid[0]);
+        if (vid == undefined) return
+        let tmpl = this.itemTmpl(vid[0])
         let frag = createFrag(tmpl, 'article', this.itemName)
         counter++
 
         if (this.playlistOutput) {
           this.playlistOutput.appendChild(frag)
         } else {
-          console.warn('VimeoPlaylist: Provide a valid selector to output playlist')
+          console.warn(
+            'VimeoPlaylist: Provide a valid selector to output playlist'
+          )
         }
-        
+
         if (counter === this.vidCount) {
           this.setupFirstVid()
           // define this.playlistItems
@@ -236,10 +239,9 @@ VimeoPlaylist.prototype = {
           this.playlistItems = document.querySelectorAll(this.itemTrigger)
           this.handlePlaylistClicks()
         }
-      });
-    });
+      })
+    })
   },
-
 
   /**
    * setupFirstVid
@@ -249,7 +251,7 @@ VimeoPlaylist.prototype = {
   setupFirstVid() {
     if (!this.playlistItems) return
     this.playlistItems[0].classList.add(this.activeClass)
-    this.player.element.setAttribute("allow", "autoplay")
+    this.player.element.setAttribute('allow', 'autoplay')
     this.player['play']()
   },
 
@@ -280,13 +282,13 @@ VimeoPlaylist.prototype = {
    * Pal
    */
   handleNavClicks() {
-    if (hasEl(`#${this.playlistNavPrev.id}`)) {
+    if (this.playlistNavPrev) {
       this.playlistNavPrev.addEventListener('click', (e) => {
         e.preventDefault()
         this.prev()
       })
     }
-    if (hasEl(`#${this.playlistNavNext.id}`)) {
+    if (this.playlistNavNext) {
       this.playlistNavNext.addEventListener('click', (e) => {
         e.preventDefault()
         this.next()
@@ -295,15 +297,15 @@ VimeoPlaylist.prototype = {
   },
 
   /**
-   * Handle Key Navigation 
+   * Handle Key Navigation
    * Keydown listener for next/prev arrow keys control
    */
   handleKeyNav() {
     document.addEventListener(
-      "keydown",
+      'keydown',
       (event) => {
-        if (event.code == "ArrowRight") this.next();
-        if (event.code == "ArrowLeft") this.prev();
+        if (event.code == 'ArrowRight') this.next()
+        if (event.code == 'ArrowLeft') this.prev()
       },
       false
     )
@@ -318,7 +320,7 @@ VimeoPlaylist.prototype = {
     let paused = document.querySelector(`.${this.pausedClass}`)
     if (active) active.classList.remove(this.activeClass)
     if (paused) paused.classList.remove(this.pausedClass)
-    if (this.hasPlaylist)
+    if (this.hasPlaylist && this.playlistItems[this.currentVidIdx])
       this.playlistItems[this.currentVidIdx].classList.add(this.activeClass)
   },
 
@@ -386,7 +388,5 @@ VimeoPlaylist.prototype = {
     }
   }
 }
-
-
 
 export default VimeoPlaylist
