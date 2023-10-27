@@ -17,7 +17,7 @@ VimeoPlaylist.defaults = {
   autoplay: true,
   color: '#7B8EF9',
   fullscreenToggle: '#js-vp-fstoggle',
-  fullscreenToggleKeyCode: 'Digit1',
+  fullscreenToggleKeyCode: null,
   hasPlaylist: true,
   playlistOutput: '#js-vp-playlist',
   playlistNavNext: '#js-vp-next',
@@ -378,7 +378,7 @@ VimeoPlaylist.prototype = {
    * Targeted vimeo iframe for full screen vid on Enter
    */
   toggleFullscreen() {
-    let vid = document.querySelector('iframe')
+    let vid = this.player.element
     if (!document.vid) {
       vid.requestFullscreen()
     } else {

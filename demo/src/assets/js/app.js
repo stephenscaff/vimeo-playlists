@@ -16,7 +16,7 @@ let options = {
   playlistOutput: '#js-vp-playlist',
   color: '#6c77f7',
   fullscreenToggle: '#js-vp-fstoggle',
-  fullscreenToggleKeyCode: 'Digit1',
+  fullscreenToggleKeyCode: 'KeyF',
   itemTmpl: playlistTmpl
 }
 
