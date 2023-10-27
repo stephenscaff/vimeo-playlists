@@ -155,10 +155,9 @@ The options param supports the following properties:
 | `muted`                   | `Boolean`                         | Mute vids                                                                      | `false`                         |
 | `controls`                | `Boolean`                         | Show player controls                                                           | `true`                          |
 | `autoplay`                | `Boolean`                         | Autoplay vids (required for continuous playlist vids)                          | `true`                          |
-| `fullScreenToggle`        | `Boolean`                         | Clicking `Enter` triggers fullscreen vid                                       | `false`                         |
 | `color`                   | `String (3 or 6 digit hex value)` | Player ui color                                                                | `#7B8EF9`                       |
 | `fullscreenToggle`        | `String / Element ID`             | id of fullscreen video toggle control                                          | `#js-vp-fstoggle`               |
-| `fullscreenToggleKeyCode` | `String / Element ID`             | full screen toggle keycode                                                     | `Digit1`                        |
+| `fullscreenToggleKeyCode` | `String / Element ID`             | full screen toggle keycode, ie: `KeyF` for `F` key                             | `null`                          |
 | `debug`                   | `Boolean`                         | Outputs helpful logs                                                           | `false`                         |
 
 <br/>
