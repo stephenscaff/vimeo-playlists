@@ -1,14 +1,14 @@
 # 📼 Vimeo Playlist
 
-A pure JavaScript library to create a continous playlist of Vimeo Videos. 
+A pure JavaScript library to create a continous playlist of Vimeo Videos.
 
 Simply define your markup and playlist template, pass an array of Vimeo IDs, profit 💵 💵 💵.
 
 [Demo Playlist→](https://stephenscaff.github.io/vimeo-playlists/)
 
-<br> 
+<br/>
 
-## Contents 
+## Contents
 
 1. [📌 Features](#-features)
 2. [🎯 Quickstart](#-quickstart)
@@ -17,9 +17,10 @@ Simply define your markup and playlist template, pass an array of Vimeo IDs, pro
 5. [🕹️ Usage](#-usage)
 6. [📅 Todos](#-todos)
 
-<br/> 
+<br/>
 
 ## 📌 Features
+
 - Builds a playlist of Vimeo Videos from an array of Vimeo IDs
 - Uses the Vimeo Player API
 - UI consists of Video Player, Playlist items (optional), Playlist controls (optional).
@@ -31,20 +32,19 @@ Simply define your markup and playlist template, pass an array of Vimeo IDs, pro
 - Supports Vimeo API options like `width`, `color`, `player controls`, `muted`, `title`
 - Hybrid NPM module, works with `import` and `require`
 
-<br> 
+<br/>
 
 ## 📦 Dependencies
 
 - `@vimeo/player`
 
-<br>
+<br/>
 
 ## 🎯 Quickstart
 
 #### 1. Install from NPM
 
 `npm i vimeoplaylist`
-
 
 #### 2. Define Markup
 
@@ -80,7 +80,7 @@ Playlist items show info about the tracks (Ie: title, thumbnail, duraction, user
  * @return {string} returns template literal
  */
 
-// import included time formater util 
+// import included time formater util
 import {formatTime}  from 'vimeoplaylist'
 
 export default function playlistTmpl(data) {
@@ -130,36 +130,38 @@ playlist.init()
 ```
 
 #### 5. Provide Styles
+
 Style as desired. While the core lib doesn't include styles, see the repo's demo project for styles that you can clone as a starting point.
 
-<br>
+<br/>
 
 ## 🧬 Options
 
 The options param supports the following properties:
 
-| Option                    | Type                              | Description                                              | Default           |
-| ------------------------- | ----------------------------------| -------------------------------------------------------- | ----------------- |
-| `hasPlaylist`             | `Boolean`                         | Make false if you need endless vids, but not playlist ui | `true`            |
-| `playlistOutput`          | `String`                          | id or class to output playlist                           | `#js-vp-playlist` |
-| `playlistNavPrev`         | `String / Element ID`             | id of Prev nav element                                   | `#js-vp-prev`     |
-| `playlistNavNext`         | `String / Element ID`             | id of Next element                                       | `#js-vp-next`     |
-| `playlist`                | `Array of Objects`                | playlist as array of objects { "id" : <vimeoid> }        | `[]`              |
-| `itemTmpl`                | `HTML Template Literal`           | Template for playlist Items                              | Template found at plist.tmpl.js               |
-| `itemName`                | `String`                          | Parent name of playlist Items (becomes parent class name) | `plist-item`              |
-| `itemTrigger`             | `String / Element selector`       | Wrapping Link selector (trigger) of playlist items (matching playlistTemplate)      | `plist-item__link`              |
-| `supportsKeyNav`          | `Boolean`                         | Enables next/prev key nav                                | `true`            |  
-| `width`                   | `Number`                          | Video width in px                                        | `900`             |
-| `title`                   | `Boolean`                         | Show video title                                         | `false`           |
-| `muted`                   | `Boolean`                         | Mute vids                                                | `false`           |
-| `controls`                | `Boolean`                         | Show player controls                                     | `true`            |
-| `autoplay`                | `Boolean`                         | Autoplay vids (required for continuous playlist vids)    | `true`            |
-| `fullScreenToggle`        | `Boolean`                         | Clicking `Enter` triggers fullscreen vid                 | `false`           |
-| `color`                   | `String (3 or 6 digit hex value)` | Player ui color                                          | `#7B8EF9`         |
-| `fullscreenToggle`        | `String / Element ID`             | id of fullscreen video toggle control                    | `#js-vp-fstoggle` |
-| `fullscreenToggleKeyCode` | `String / Element ID`             | full screen toggle keycode                               | `Digit1`          |
+| Option                    | Type                              | Description                                                                    | Default                         |
+| ------------------------- | --------------------------------- | ------------------------------------------------------------------------------ | ------------------------------- |
+| `hasPlaylist`             | `Boolean`                         | Make false if you need endless vids, but not playlist ui                       | `true`                          |
+| `playlistOutput`          | `String`                          | id or class to output playlist                                                 | `#js-vp-playlist`               |
+| `playlistNavPrev`         | `String / Element ID`             | id of Prev nav element                                                         | `#js-vp-prev`                   |
+| `playlistNavNext`         | `String / Element ID`             | id of Next element                                                             | `#js-vp-next`                   |
+| `playlist`                | `Array of Objects`                | playlist as array of objects { "id" : [vimeoID] }                              | `[]`                            |
+| `itemTmpl`                | `HTML Template Literal`           | Template for playlist Items                                                    | Template found at plist.tmpl.js |
+| `itemName`                | `String`                          | Parent name of playlist Items (becomes parent class name)                      | `plist-item`                    |
+| `itemTrigger`             | `String / Element selector`       | Wrapping Link selector (trigger) of playlist items (matching playlistTemplate) | `plist-item__link`              |
+| `supportsKeyNav`          | `Boolean`                         | Enables next/prev key nav                                                      | `true`                          |
+| `width`                   | `Number`                          | Video width in px                                                              | `900`                           |
+| `title`                   | `Boolean`                         | Show video title                                                               | `false`                         |
+| `muted`                   | `Boolean`                         | Mute vids                                                                      | `false`                         |
+| `controls`                | `Boolean`                         | Show player controls                                                           | `true`                          |
+| `autoplay`                | `Boolean`                         | Autoplay vids (required for continuous playlist vids)                          | `true`                          |
+| `fullScreenToggle`        | `Boolean`                         | Clicking `Enter` triggers fullscreen vid                                       | `false`                         |
+| `color`                   | `String (3 or 6 digit hex value)` | Player ui color                                                                | `#7B8EF9`                       |
+| `fullscreenToggle`        | `String / Element ID`             | id of fullscreen video toggle control                                          | `#js-vp-fstoggle`               |
+| `fullscreenToggleKeyCode` | `String / Element ID`             | full screen toggle keycode                                                     | `Digit1`                        |
+| `debug`                   | `Boolean`                         | Outputs helpful logs                                                           | `false`                         |
 
-<br>  
+<br/>
 
 ## 🤖 Project Commands
 
@@ -189,10 +191,9 @@ Runs the demo project via Parcel.
 
 `npm run lint`
 
-<br> 
+<br/>
 
-## 🕹️ Usage 
-
+## 🕹️ Usage
 
 ### Playlist Content
 
@@ -200,7 +201,7 @@ Playlists are created from Vimeo IDs.
 
 Vimeo IDs can be provided to the `playlist` option directly, as an Array of objects, or as an external JSON file.
 
-#### Creating playlist of Vimeo Ids 
+#### Creating playlist of Vimeo Ids
 
 ```
 import VimeoPlaylist form 'vimeoplaylist'
@@ -220,6 +221,7 @@ let vplaylist = new VimeoPlaylist('js-player', options)
 // Init
 vplaylist.init()
 ```
+
 #### Vimeo IDs from JSON file
 
 To use external JSON file, setup you JSON like so:
@@ -277,7 +279,8 @@ fetch(req)
     vplaylist.init()
 })
 ```
-<br>
+
+<br/>
 
 ### Markup / HTML
 
@@ -316,12 +319,12 @@ let options = {
 
 ### Playlist Item Template
 
-Each item in the playlist provides video and user info (ie: id, title, thubnails, url, duration, etc). 
+Each item in the playlist provides video and user info (ie: id, title, thubnails, url, duration, etc).
 
 You can use the default template or provide your own to customize the layout/markup of each playlist item. Simply create a template literal, perhaps as a seperate file, and pass its reference to the `itemTmpl` option.
 
-
 #### Playlist Template Example
+
 ```
 // plist.tmpl
 
@@ -345,7 +348,8 @@ export default function playlistTmpl(data) {
   `
 }
 ```
-### Pass Playlist template 
+
+### Pass Playlist template
 
 ```
 import playlistTmpl from './plist.tmpl'
@@ -361,46 +365,45 @@ let options = {
 
 Your template's data param can use to following properties from Vimeo's reponse object.
 
-| Name                     | Type              | Description                            |
-|--------------------------|-------------------|----------------------------------------|
-| description              | `String`          | Vid details                            |
-| duration                 | `number`          | Vid duration time                      |
-| embed_privacy            | `string`          | Privacy embed location, ie: 'anywhere  |
-| height                   | `number`          | px height of vid                       |
-| id                       | `number`          | Vid id                                 |
-| stats_number_of_comments | `number`          | Number of comments                     |
-| stats_number_of_likes    | `number`          | Number of vid's likes                  |
-| stats_number_of_plays    | `number`          | Number of vid's plays                  |
-| tags                     | `string`          | Comma seperated tags                   |
-| thumbnail_large          | `(string\|link)`   | Large format vid thumb                 |
-| thumbnail_medium         | `(string\|link)`   | Med format vid thumb                   |
-| thumbnail_small          | `(string\|link)`   | Small format thumb                     |
-| title                    | `string`          | Vid title                              | 
-| upload_date              | `(string\|date)`   | Upload date ie "2019-01-18 10:22:32"   |
-| url                      | `(string\|link)`   | Vid URL                                |
-| user_id                  | `number`          | User ID                                |
-| user_name                | `string`          | User name                              |
-| user_portrait_huge       | `(string\|link)`   | User image 300x300px                   |
-| user_portrait_large      | `(string\|link)`   | User image 100x100px                   |
-| user_portrait_medium     | `(string\|link)`   | User image 75x75px                     |
-| user_portrait_small      | `(string\|link)`   | User image 30x30px                     |
-| user_url                 | `(string\|link)`   | User url                               |
-| width                    | `number`          | Video width in px                      |
+| Name                     | Type             | Description                           |
+| ------------------------ | ---------------- | ------------------------------------- |
+| description              | `String`         | Vid details                           |
+| duration                 | `number`         | Vid duration time                     |
+| embed_privacy            | `string`         | Privacy embed location, ie: 'anywhere |
+| height                   | `number`         | px height of vid                      |
+| id                       | `number`         | Vid id                                |
+| stats_number_of_comments | `number`         | Number of comments                    |
+| stats_number_of_likes    | `number`         | Number of vid's likes                 |
+| stats_number_of_plays    | `number`         | Number of vid's plays                 |
+| tags                     | `string`         | Comma seperated tags                  |
+| thumbnail_large          | `(string\|link)` | Large format vid thumb                |
+| thumbnail_medium         | `(string\|link)` | Med format vid thumb                  |
+| thumbnail_small          | `(string\|link)` | Small format thumb                    |
+| title                    | `string`         | Vid title                             |
+| upload_date              | `(string\|date)` | Upload date ie "2019-01-18 10:22:32"  |
+| url                      | `(string\|link)` | Vid URL                               |
+| user_id                  | `number`         | User ID                               |
+| user_name                | `string`         | User name                             |
+| user_portrait_huge       | `(string\|link)` | User image 300x300px                  |
+| user_portrait_large      | `(string\|link)` | User image 100x100px                  |
+| user_portrait_medium     | `(string\|link)` | User image 75x75px                    |
+| user_portrait_small      | `(string\|link)` | User image 30x30px                    |
+| user_url                 | `(string\|link)` | User url                              |
+| width                    | `number`         | Video width in px                     |
 
+#### Playlist Template Requirements
 
-#### Playlist Template Requirements 
+It's important that your playlist template at least have a wrapping trigger/link element as seen in the above example.
 
-It's important that your playlist template at least have a wrapping trigger/link element as seen in the above example. 
+**Important:**
 
-**Important:** 
-
-The `itemTrigger` option defines the playlist Item wrapping link/trigger used for click events. If you're passing your own `itemTmpl`, make sure to update the `itemTrigger` to match your link's selector name. Will refactor out this requirement in the future. 
+The `itemTrigger` option defines the playlist Item wrapping link/trigger used for click events. If you're passing your own `itemTmpl`, make sure to update the `itemTrigger` to match your link's selector name. Will refactor out this requirement in the future.
 
 The `itemName` option is used to define the parent class name of the playlist item block. You might also want to make sure that has some relevance to how you organize item's class names.
 
-**Additional Notes**: 
+**Additional Notes**:
 
-When a playlist item is playing, it will have an `is-playing` class to leverage. 
+When a playlist item is playing, it will have an `is-playing` class to leverage.
 When a playlist item is paused, it will have an `is-paused` class.
 
 ### Playlist Navigation
@@ -416,6 +419,7 @@ Playlist navigation contols next / prev buttons. You can use the default selecto
   <button id="js-vp-next" class="playlist__next">Next <i>→</i></button>
 </nav>
 ```
+
 #### Customize Nav Ids
 
 ```
@@ -446,7 +450,8 @@ let options = {
   fullscreenToggleKeyCode: 'Digit1',
 }
 ```
-<br> 
+
+<br/>
 
 ## 📅 ToDos
 
