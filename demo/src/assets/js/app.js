@@ -15,7 +15,7 @@ let options = {
   playlist: data,
   playlistOutput: '#js-vp-playlist',
   color: '#6c77f7',
-  fullscreenToggle:  '#js-vp-fstoggle',
+  fullscreenToggle: '#js-vp-fstoggle',
   fullscreenToggleKeyCode: 'Digit1',
   itemTmpl: playlistTmpl
 }
@@ -23,4 +23,3 @@ let options = {
 // Init on #js-player
 const vids = new VimeoPlaylist('js-vp-player', options)
 vids.init()
-
