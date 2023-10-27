@@ -175,7 +175,6 @@ VimeoPlaylist.prototype = {
    */
   onPlay() {
     this.player.on('play', () => {
-      console.log('DEBUG', this.debug)
       if (this.debug) console.debug('play')
       this.setActiveState()
     })
@@ -227,9 +226,10 @@ VimeoPlaylist.prototype = {
         if (this.playlistOutput) {
           this.playlistOutput.appendChild(frag)
         } else {
-          console.warn(
-            'VimeoPlaylist: Provide a valid selector to output playlist'
-          )
+          if (this.debug)
+            console.warn(
+              'VimeoPlaylist: Provide a valid selector to output playlist'
+            )
         }
 
         if (counter === this.vidCount) {
