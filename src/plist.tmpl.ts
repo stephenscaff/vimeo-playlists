@@ -9,8 +9,14 @@ import { formatTime } from './utils'
  * @param {obj} data - response object of video info from vimeo promise
  * @return {string} returns template literal
  */
-export default function playlistTmpl(data) {
-  let timeDuration = formatTime(data.duration)
+export default function playlistTmpl(data: {
+  id: number;
+  duration: string;
+  thumbnail_large: string;
+  title: string;
+  user_name: string;
+}): string {
+  let timeDuration = formatTime(data.duration);
 
   return `
     <a class="plist-item__link" data-vimeo-id="${data.id}" tabindex="0">

@@ -25,6 +25,7 @@
   "files": [
     "dist"
   ],
+  "types": "dist/types.d.ts" ,
   "targets": {
     "main": false,
     "module": false,
