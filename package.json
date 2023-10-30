@@ -1,6 +1,6 @@
 {
   "name": "vimeoplaylist",
-  "version": "2.2.2",
+  "version": "2.3.0",
   "description": "Vimeo Playlists: A JS library to create endless video playlists with the Vimeo Player API. Features playlist UI, controls and customizable template.",
   "repository": {
     "type": "git",
