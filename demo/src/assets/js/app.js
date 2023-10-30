@@ -3,7 +3,6 @@
 // Normally, include via NPM
 // import VimeoPlaylist form 'vimeoplaylist'
 import VimeoPlaylist from '../../../../src'
-
 // External Data
 import data from './playlist.json'
 // Custom Playlist Item Template

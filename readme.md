@@ -1,6 +1,6 @@
 # 📼 Vimeo Playlist
 
-A pure JavaScript library to create a continous playlist of Vimeo Videos.
+A pure JavaScript library to create endless video playlists with the Vimeo Player API. Features playlist UI, controls and customizable template.
 
 Simply define your markup and playlist template, pass an array of Vimeo IDs, profit 💵 💵 💵.
 
