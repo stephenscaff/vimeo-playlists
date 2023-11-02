@@ -603,13 +603,12 @@ vids.init();
 
 },{"../../../../src":"8lqZg","./playlist.json":"2MwtK","./plist.tmpl":"bijhv","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8lqZg":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "formatTime", ()=>(0, _utils.formatTime));
 var _vimeoPlaylistJs = require("./vimeo-playlist.js");
 var _vimeoPlaylistJsDefault = parcelHelpers.interopDefault(_vimeoPlaylistJs);
 var _utils = require("./utils");
-// export default VimeoPlaylist
-// export {VimeoPlaylist, formatTime}
-module.exports = (0, _vimeoPlaylistJsDefault.default);
-module.exports.formatTime = (0, _utils.formatTime);
+exports.default = (0, _vimeoPlaylistJsDefault.default);
 
 },{"./vimeo-playlist.js":"7vwxk","./utils":"en4he","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7vwxk":[function(require,module,exports) {
 /* eslint-disable no-self-assign */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -717,6 +716,7 @@ var _plistTmplDefault = parcelHelpers.interopDefault(_plistTmpl);
    * Player Listeners
    * @fires {onEnd | onPause | onPlay | toggleFullscreen}
    */ listeners () {
+        this.onAlmostEnd();
         this.onEnd();
         this.onPause();
         this.onPlay();
@@ -731,6 +731,7 @@ var _plistTmplDefault = parcelHelpers.interopDefault(_plistTmpl);
    * can cause a browser promise pause() error.
    * @param {string} id - vimeo video id
    */ loadVid (id) {
+        console.log(id, this.player, this.player.loadVideo(id));
         this.player.loadVideo(id).then(()=>{
             this.setActiveState();
         }).catch((err)=>{
@@ -741,11 +742,26 @@ var _plistTmplDefault = parcelHelpers.interopDefault(_plistTmpl);
     /**
    * OnEnd
    * Listens for when a vid ends.
-   * @fires {next}
+   * @fires next()
    */ onEnd () {
         this.player.on("ended", ()=>{
             if (this.debug) console.debug("ended");
             this.next();
+        });
+    },
+    /**
+   * OnTimeupdate
+   * Listens for when almost ends, based on threshold
+   * @fires next()
+   */ onAlmostEnd () {
+        this.player.on("timeupdate", (data)=>{
+            const currentTime = data.seconds;
+            const duration = data.duration;
+            const threshold = 0.5;
+            if (duration - currentTime <= threshold) {
+                if (this.debug) console.log("Video is almost ended");
+                this.next();
+            }
         });
     },
     /**
@@ -771,7 +787,7 @@ var _plistTmplDefault = parcelHelpers.interopDefault(_plistTmpl);
    * On Fullscreen Toggle
    * @fires {toggleFullscreen} - if fullscreenToggle
    */ onFullScreenToggle () {
-        //FS Toggle ke
+        //FS Toggle key
         if (this.fullscreenToggleKeyCode) window.addEventListener("keydown", (e)=>{
             if (e.code === this.fullscreenToggleKeyCode) this.toggleFullscreen();
         }, false);
@@ -792,7 +808,7 @@ var _plistTmplDefault = parcelHelpers.interopDefault(_plistTmpl);
         const fetchedVids = (0, _utils.fetchAllVimeoVids)(this.playlist);
         fetchedVids.then((vids)=>{
             vids.forEach((vid)=>{
-                if (vid == undefined) return;
+                if (vid === undefined) return;
                 let tmpl = this.itemTmpl(vid[0]);
                 let frag = (0, _utils.createFrag)(tmpl, "article", this.itemName);
                 counter++;
@@ -856,8 +872,8 @@ var _plistTmplDefault = parcelHelpers.interopDefault(_plistTmpl);
    * Keydown listener for next/prev arrow keys control
    */ handleKeyNav () {
         document.addEventListener("keydown", (event)=>{
-            if (event.code == "ArrowRight") this.next();
-            if (event.code == "ArrowLeft") this.prev();
+            if (event.code === "ArrowRight") this.next();
+            if (event.code === "ArrowLeft") this.prev();
         }, false);
     },
     /**
@@ -3402,7 +3418,7 @@ parcelHelpers.defineInteropFlag(exports);
  */ parcelHelpers.export(exports, "fetchData", ()=>fetchData);
 /**
  * Fetch all vimeo vids with Promise.all
- * @param {Array} playlist - Array of objects that make upd 
+ * @param {Array} playlist - Array of objects that make upd
  * @returns {Promise} - Combined promises from api requestsn
  */ parcelHelpers.export(exports, "fetchAllVimeoVids", ()=>fetchAllVimeoVids);
 /**
@@ -3443,7 +3459,7 @@ function fetchAllVimeoVids(playlist) {
 /**
  * Error check for Fetch
  * @param {Object} res - fetch response
- * @returns 
+ * @returns
  */ function checkError(res) {
     if (!res.ok) throw Error(res.statusText);
     return res.json();
