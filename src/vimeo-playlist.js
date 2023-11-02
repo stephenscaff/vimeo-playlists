@@ -118,6 +118,7 @@ VimeoPlaylist.prototype = {
    * @fires {onEnd | onPause | onPlay | toggleFullscreen}
    */
   listeners() {
+    this.onAlmostEnd()
     this.onEnd()
     this.onPause()
     this.onPlay()
@@ -134,6 +135,7 @@ VimeoPlaylist.prototype = {
    * @param {string} id - vimeo video id
    */
   loadVid(id) {
+    console.log(id, this.player, this.player.loadVideo(id))
     this.player
       .loadVideo(id)
       .then(() => {
@@ -148,12 +150,29 @@ VimeoPlaylist.prototype = {
   /**
    * OnEnd
    * Listens for when a vid ends.
-   * @fires {next}
+   * @fires next()
    */
   onEnd() {
     this.player.on('ended', () => {
       if (this.debug) console.debug('ended')
       this.next()
+    })
+  },
+
+  /**
+   * OnTimeupdate
+   * Listens for when almost ends, based on threshold
+   * @fires next()
+   */
+  onAlmostEnd() {
+    this.player.on('timeupdate', (data) => {
+      const currentTime = data.seconds
+      const duration = data.duration
+      const threshold = 0.5
+      if (duration - currentTime <= threshold) {
+        if (this.debug) console.log('Video is almost ended')
+        this.next()
+      }
     })
   },
 
@@ -185,7 +204,7 @@ VimeoPlaylist.prototype = {
    * @fires {toggleFullscreen} - if fullscreenToggle
    */
   onFullScreenToggle() {
-    //FS Toggle ke
+    //FS Toggle key
     if (this.fullscreenToggleKeyCode) {
       window.addEventListener(
         'keydown',
@@ -218,7 +237,7 @@ VimeoPlaylist.prototype = {
 
     fetchedVids.then((vids) => {
       vids.forEach((vid) => {
-        if (vid == undefined) return
+        if (vid === undefined) return
         let tmpl = this.itemTmpl(vid[0])
         let frag = createFrag(tmpl, 'article', this.itemName)
         counter++
@@ -304,8 +323,8 @@ VimeoPlaylist.prototype = {
     document.addEventListener(
       'keydown',
       (event) => {
-        if (event.code == 'ArrowRight') this.next()
-        if (event.code == 'ArrowLeft') this.prev()
+        if (event.code === 'ArrowRight') this.next()
+        if (event.code === 'ArrowLeft') this.prev()
       },
       false
     )

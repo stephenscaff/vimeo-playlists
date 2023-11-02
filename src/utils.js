@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch'
 
-'use strict'
+;('use strict')
 
 /**
  * Fetch Data utility
@@ -17,31 +17,32 @@ export function fetchData(url) {
 
 /**
  * Fetch all vimeo vids with Promise.all
- * @param {Array} playlist - Array of objects that make upd 
+ * @param {Array} playlist - Array of objects that make upd
  * @returns {Promise} - Combined promises from api requestsn
  */
 export function fetchAllVimeoVids(playlist) {
-  return Promise.all(playlist.map(request => {
-    return fetch(`https://vimeo.com/api/v2/video/${request.id}.json`)
-    .then((res)=>{ 
-      if (res.ok) return res.json(); 
-      else throw new Error("Status code error :" + res.status) 
+  return Promise.all(
+    playlist.map((request) => {
+      return fetch(`https://vimeo.com/api/v2/video/${request.id}.json`)
+        .then((res) => {
+          if (res.ok) return res.json()
+          else throw new Error('Status code error :' + res.status)
+        })
+        .catch((err) => console.log(err))
     })
-      .catch(err=>console.log(err))
-  }))
+  )
 }
-
 
 /**
  * Error check for Fetch
  * @param {Object} res - fetch response
- * @returns 
+ * @returns
  */
 function checkError(res) {
   if (!res.ok) {
-    throw Error(res.statusText);
+    throw Error(res.statusText)
   }
-  return res.json();
+  return res.json()
 }
 
 /**
