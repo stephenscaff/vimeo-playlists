@@ -459,7 +459,7 @@ The Vimeo Player API _seems_ to have an issue where End Screen overlays the vide
 We can _seemingly_ address this by listening until the current video is _almost_ ended, then calling next.
 This prevents the End Screen from appearing, which _seems_ desireable for a continous playlist.
 
-So, as of `v2.6.0`, we use `Timeupdate` instead of `ended` to call `next()` when current vid is `0.5s` from end.
+So, as of `v2.4.0`, we use `Timeupdate` instead of `ended` to call `next()` when current vid is `0.5s` from end.
 
 <br/>
 
