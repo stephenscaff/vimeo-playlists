@@ -452,13 +452,25 @@ let options = {
 
 <br/>
 
+### Using Almost Ended (Timeupdate)
+
+The Vimeo Player API _seems_ to have an issue where End Screen overlays the video if the player is scrolled out of view (not visible).
+
+We can _seemingly_ address this by listening until the current video is _almost_ ended, then calling next.
+This prevents the End Screen from appearing, which _seems_ desireable for a continous playlist.
+
+So, as of `v2.6.0`, we use `Timeupdate` instead of `ended` to call `next()` when current vid is `0.5s` from end.
+
+<br/>
+
 ## 📅 ToDos
 
 - ~~Option for custom playlist template~~
 - ~~Document availble data options from Vimeo's reponse object for playlist template.~~
 - ~~Make hybrid npm module to support `import` and `require`~~.
-- Refactor how video id's are fetched, providing better error handling for 404'd items.
+- ~~Provide a util method for ellapsed time.~~
+- ~~Address issue with End Screen overlaying player/video.~~
+- Provide better error handling for 404'd items.
 - Since autoplay on load only works if muted due to Chrome policy, provide a button to unmute.
-- Provide a util method for ellapsed time.
 - Provide destory method
 - Perhaps support for multiple instances per page, with everything scoped to element.
